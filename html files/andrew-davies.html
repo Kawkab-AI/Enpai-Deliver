@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Andrew Davies - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/C4E03AQEKBI1J19FqLA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1602540120761?e=1762387200&v=beta&t=_f00IUruIw5ROR85BzbWiA4QsxT0yS4Roa3CxOO91nA" alt="Andrew Davies" onerror="this.parentElement.textContent='AD'">
+				</div>
+				<div class="hero-meta">
+					<h1>Andrew Davies</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Head of Procurement</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Vocus</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 New South Wales, Australia</span>
+						<span class="pill">🎓 University of Gloucestershire</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Andrew is an experienced leader in strategic procurement with a proven history in various markets and industries. He excels in building high-performing teams through clear strategic alignment and effective partnerships with stakeholders. Known for his outcome-focused negotiation skills, Andrew adapts to enhance business outcomes by leveraging professional insights from both customer and provider perspectives. His expertise encompasses procurement processes, contract management, vendor relationships, and utility of data analytics tools.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Head of Procurement | Transformation | Integration | Sustainability</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:andrew.davies@vocus.com.au">andrew.davies@vocus.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 414 772 952">+61 414 772 952</a></div>
+					<div class="k">Second Phone</div><div class="v"><a href="tel:+1 613-710-2302">+1 613-710-2302</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/andrew-caradoc-davies-1348911" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Head of Procurement at Vocus</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Associate Director - Procurement at Optus</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Senior Manager - Procurement  at Accenture</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Indirect Procurement Asia Pacific, Regional Indirect Procurement Manager ANZ at Linde</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    The tool used to reskill 165,000 Accenture employees is now available. The Accenture Future Talent Platform helps companies close the skills gap in a rapidly advancing world by empowering employees. Find out more:
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2018-10-05 16:59:03</span>
+    <a href="https://www.linkedin.com/posts/andrew-caradoc-davies-1348911_accenture-future-talent-platform-activity-6454127651144630272-aTSu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    We've launched our Digital Hub in Singapore! It'll house >200 creative, marketing, data science and technology experts.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2017-09-22 00:30:04</span>
+    <a href="https://www.linkedin.com/posts/andrew-caradoc-davies-1348911_accenture-digital-hub-singapore-launches-activity-6316896150674898944-5iOF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Andrew Wilson: CIOs are looking hard at how they reinvent themselves in age of digital provisioning & operation.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2017-05-22 20:21:41</span>
+    <a href="https://www.linkedin.com/posts/andrew-caradoc-davies-1348911_the-cio-in-todays-digital-age-time-for-activity-6272622323665371136-n_fH?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/D560BAQEZxxPz1eBB8A/company-logo_400_400/B56Zh5N.1xHQAY-/0/1754380365861/vocus_communications_logo?e=1762387200&v=beta&t=nqfw_BSkI1wftAp8UacNwJbK4O9cn-A_ajoIxoUJd3E" alt="Vocus">
+					</div>
+					<div>
+						<div class="company-name">Vocus</div>
+						<div class="company-tagline">Connecting Australia's digital future</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://vocus.com.au" target="_blank" rel="noopener">https://vocus.com.au</a></div>
+					<div class="k">Industry</div><div class="v">telecommunications</div>
+					<div class="k">Phone</div><div class="v">+61 2 8999 8999</div>
+					<div class="k">Address</div><div class="v">452 Flinders Street, Melbourne, Victoria, Australia, 3000</div>
+					<div class="k">City</div><div class="v">Melbourne</div>
+					<div class="k">State</div><div class="v">Victoria</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company</strong>
+					<p>Vocus is a leading specialist fibre and network solutions provider, connecting people, businesses, governments, and communities across Australia and to the world. We challenge convention and deliver brilliant solutions simply through our world-class team of experts. Our 25,000km fibre network is purpose-built and managed for business and government, ensuring high performance and security.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief</strong>
+					<p>Vocus is an Australian telecommunications company founded in 2008, headquartered in Melbourne, Victoria. The company specializes in providing high-performance fibre and network solutions, including internet services, unified communications, data and security, mobile, and voice services. Vocus serves a diverse clientele, including small to medium-sized businesses, enterprises, government agencies, and wholesale partners. With a national fibre network spanning over 51,000 km, Vocus offers extensive coverage across Australia, connecting nearly 20,000 buildings and providing access to 121 nbn™ points of interconnect. The company has established strategic partnerships with industry leaders such as Fortinet, Zoom, Dubber, and Interactive Group, enhancing its service offerings and technological capabilities. Vocus is recognized for its commitment to innovation, delivering secure and scalable digital solutions that support the evolving needs of its clients. The company emphasizes rapid deployments, custom builds, and modern, agile delivery at scale, positioning itself as a reliable partner in the telecommunications industry.</p>
+				</div>
+				
+
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    The month of October marks the start of Vocus' Safety and Security Month, bringing together National Safe Work Month and Cyber Security Awareness Month. It's a great opportunity to refocus on the practical steps we can all take to make safety and security part of our everyday.
+ 
+Small actions compound into safer workplaces and more secure operations. Check out our tips below for quick, practical steps you can apply right now to build better safety and security habits.
+ 
+What safety or security habit will you commit to this month?
+ 
+#NationalSafeWorkMonth #CyberSecurityAwarenessMonth #WorkplaceSafety #SafetyAndSecurity
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-30 16:30:01</span>
+    <a href="https://www.linkedin.com/posts/vocus-communications_nationalsafeworkmonth-cybersecurityawarenessmonth-activity-7378934174176460800-Gljy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-YSMBwMabic7NCp8xfWdNR9zJKdEPX-k" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    We just spent a couple of days at LGITSA - Local Government Information Technology South Australia, connecting with customers and partners while hearing from an excellent lineup of speakers.
+
+We met with digital and ICT professionals to discuss Vocus connectivity solutions, including fast, secure fibre connecting offices and low-latency LEO satellite communications connecting remote and rural locations throughout Australia.
+
+Working with councils means delivering secure, scalable, resilient connectivity solutions that support better community service delivery. When local governments have the right infrastructure, they can serve their communities more effectively.
+
+Looking forward to working with councils across South Australia.
+
+Discover more about our solutions for local government: https://lnkd.in/gumMcYvB 
+
+#LEOSatellite #Connectivity #DigitalTransformation #BrilliantMadeSimple
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-28 22:58:53</span>
+    <a href="https://www.linkedin.com/posts/vocus-communications_lgitsa-2025-activity-7378307262840446976-uw8m?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-YSMBwMabic7NCp8xfWdNR9zJKdEPX-k" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    We recently co-sponsored iTnews executive roundtables with NEXTDC, bringing together senior technology leaders to tackle a critical challenges. 
+
+The conversations focused on enabling real time, distributed data access and managing the performance demands of multi-agent AI. Key insights emerged around how CIOs balance risk, cost and future-readiness when supporting emerging AI workloads.
+ 
+These discussions highlight why modern infrastructure partnerships matter. As organisations accelerate AI adoption, the gap between ambition and infrastructure reality continues to widen - creating opportunities for providers who understand both connectivity and compute requirements.
+ 
+Thanks to ITNews for hosting the sessions and all the executives who attended and provided their learnings and insights. 
+
+Patrick Clancy, Paul Bullock, Elizabeth G., Chris Losco, Derek Paterson, Velvet-Belle Templeman 
+
+#AIInfrastructure #BrilliantMadeSimple
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-24 22:00:06</span>
+    <a href="https://www.linkedin.com/posts/vocus-communications_itnews-roundtable-sessions-activity-7376842917920845824-Ccmc?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-YSMBwMabic7NCp8xfWdNR9zJKdEPX-k" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      

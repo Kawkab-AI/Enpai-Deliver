@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Kawkab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-navbar {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* Card hover effects */
+        .user-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .user-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Button animations */
+        .view-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .view-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Logo placeholder */
+        .logo-placeholder {
+            transition: all 0.3s ease;
+        }
+
+        .logo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Stagger animation for cards */
+        .user-card:nth-child(1) { animation-delay: 0.1s; }
+        .user-card:nth-child(2) { animation-delay: 0.2s; }
+        .user-card:nth-child(3) { animation-delay: 0.3s; }
+        .user-card:nth-child(4) { animation-delay: 0.4s; }
+        .user-card:nth-child(5) { animation-delay: 0.5s; }
+        .user-card:nth-child(6) { animation-delay: 0.6s; }
+        .user-card:nth-child(7) { animation-delay: 0.7s; }
+        .user-card:nth-child(8) { animation-delay: 0.8s; }
+        .user-card:nth-child(9) { animation-delay: 0.9s; }
+        .user-card:nth-child(10) { animation-delay: 1s; }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navbar with Glassmorphism -->
+    <nav class="glass-navbar sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-28">
+                
+                <!-- Left Logo -->
+                <div class="flex-shrink-0">
+                    <div class="logo-placeholder flex items-center space-x-3">
+                        <img src="logo1.png" alt="Kawkab.AI Logo" class="h-20">
+                    </div>
+                </div>
+
+                <!-- Right Logo -->
+                <div class="flex-shrink-0">
+                    <div class="logo-placeholder flex items-center space-x-3">
+                        <img src="logo4.png" alt="Deliver Logo" class="h-12">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Header -->
+        <div class="mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Welcome to your <span class="gradient-text">Dashboard</span>
+            </h1>
+            <p class="text-lg text-gray-600">Manage and view all user profiles from here</p>
+        </div>
+
+        <!-- User Cards Column (Generated Dynamically) -->
+        <div id="cardsContainer" class="max-w-4xl mx-auto space-y-5">
+            <!-- Cards will be generated here by JavaScript -->
+        </div>
+
+        <!-- Logout Button -->
+        <div class="mt-12 text-center fade-in">
+            <button onclick="logout()" class="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-900 transition-all duration-300 hover:scale-105">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                Logout
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // Check if user is logged in
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        // ============================================
+        // CONFIGURATION: Add your HTML files here
+        // ============================================
+        // Simply add new entries to this array with:
+        // - fileName: the name of your HTML file (without path)
+        // - title: the title to display on the card
+        // - subtitle: the subtitle/description for the card
+        // - color: gradient color theme (blue, purple, green, pink, yellow, indigo, red, teal, orange, cyan)
+        // ============================================
+
+        const htmlFiles = [
+            { fileName: 'andrew-davies.html', title: 'Andrew Davies', subtitle: 'Profile', color: 'blue' },
+            { fileName: 'anirudh-khatri.html', title: 'Anirudh Khatri', subtitle: 'Profile', color: 'purple' },
+            { fileName: 'cynthia-chung.html', title: 'Cynthia Chung', subtitle: 'Profile', color: 'green' },
+            { fileName: 'jason-elson.html', title: 'Jason Elson', subtitle: 'Profile', color: 'yellow' },
+            { fileName: 'mark-hofmeyr.html', title: 'Mark Hofmeyr', subtitle: 'Profile', color: 'indigo' },
+            { fileName: 'nikki-austin.html', title: 'Nikki Austin', subtitle: 'Profile', color: 'red' },
+            { fileName: 'sam-mikhail.html', title: 'Sam Mikhail', subtitle: 'Profile', color: 'teal' },
+            { fileName: 'shehan-micheal.html', title: 'Shehan Micheal', subtitle: 'Profile', color: 'orange' },
+            { fileName: 'tim-waterhouse.html', title: 'Tim Waterhouse', subtitle: 'Profile', color: 'cyan' }
+        ];
+
+        // ============================================
+        // AUTOMATIC CARD GENERATION
+        // ============================================
+
+        const colorSchemes = {
+            blue: { from: 'from-blue-400', to: 'to-blue-600', btnFrom: 'from-blue-500', btnTo: 'to-blue-600', btnHoverFrom: 'hover:from-blue-600', btnHoverTo: 'hover:to-blue-700' },
+            purple: { from: 'from-purple-400', to: 'to-purple-600', btnFrom: 'from-purple-500', btnTo: 'to-purple-600', btnHoverFrom: 'hover:from-purple-600', btnHoverTo: 'hover:to-purple-700' },
+            green: { from: 'from-green-400', to: 'to-green-600', btnFrom: 'from-green-500', btnTo: 'to-green-600', btnHoverFrom: 'hover:from-green-600', btnHoverTo: 'hover:to-green-700' },
+            pink: { from: 'from-pink-400', to: 'to-pink-600', btnFrom: 'from-pink-500', btnTo: 'to-pink-600', btnHoverFrom: 'hover:from-pink-600', btnHoverTo: 'hover:to-pink-700' },
+            yellow: { from: 'from-yellow-400', to: 'to-yellow-600', btnFrom: 'from-yellow-500', btnTo: 'to-yellow-600', btnHoverFrom: 'hover:from-yellow-600', btnHoverTo: 'hover:to-yellow-700' },
+            indigo: { from: 'from-indigo-400', to: 'to-indigo-600', btnFrom: 'from-indigo-500', btnTo: 'to-indigo-600', btnHoverFrom: 'hover:from-indigo-600', btnHoverTo: 'hover:to-indigo-700' },
+            red: { from: 'from-red-400', to: 'to-red-600', btnFrom: 'from-red-500', btnTo: 'to-red-600', btnHoverFrom: 'hover:from-red-600', btnHoverTo: 'hover:to-red-700' },
+            teal: { from: 'from-teal-400', to: 'to-teal-600', btnFrom: 'from-teal-500', btnTo: 'to-teal-600', btnHoverFrom: 'hover:from-teal-600', btnHoverTo: 'hover:to-teal-700' },
+            orange: { from: 'from-orange-400', to: 'to-orange-600', btnFrom: 'from-orange-500', btnTo: 'to-orange-600', btnHoverFrom: 'hover:from-orange-600', btnHoverTo: 'hover:to-orange-700' },
+            cyan: { from: 'from-cyan-400', to: 'to-cyan-600', btnFrom: 'from-cyan-500', btnTo: 'to-cyan-600', btnHoverFrom: 'hover:from-cyan-600', btnHoverTo: 'hover:to-cyan-700' }
+        };
+
+        // Generate cards dynamically
+        function generateCards() {
+            const container = document.getElementById('cardsContainer');
+            
+            htmlFiles.forEach((file, index) => {
+                const colors = colorSchemes[file.color] || colorSchemes.blue;
+                const cardNumber = index + 1;
+                
+                const card = document.createElement('div');
+                card.className = 'user-card fade-in bg-white rounded-2xl shadow-lg p-6 border border-gray-100';
+                card.style.animationDelay = `${(index + 1) * 0.1}s`;
+                
+                card.innerHTML = `
+                    <!-- Avatar Circle -->
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br ${colors.from} ${colors.to} rounded-full">
+                            <span class="text-2xl font-bold text-white">${cardNumber}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="flex-1 ml-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">${file.title}</h3>
+                        <p class="text-gray-500 text-sm">${file.subtitle}</p>
+                    </div>
+                    
+                    <!-- Button -->
+                    <div class="flex-shrink-0 ml-6">
+                        <button onclick="window.open('html files/${file.fileName}', '_blank')" class="view-btn bg-gradient-to-r ${colors.btnFrom} ${colors.btnTo} text-white font-semibold py-3 px-8 rounded-xl ${colors.btnHoverFrom} ${colors.btnHoverTo} whitespace-nowrap">
+                            View Profile
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Generate cards on page load
+        generateCards();
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>
+

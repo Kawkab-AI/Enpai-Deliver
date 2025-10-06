@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Cynthia Chung - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/C5603AQGwyEdRw5qDKQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1592396328186?e=1762387200&v=beta&t=xZTUuOzdaXY8q9GArFKZfbeJwOfhPrOWyZqyfZy2RXQ" alt="Cynthia Chung" onerror="this.parentElement.textContent='CC'">
+				</div>
+				<div class="hero-meta">
+					<h1>Cynthia Chung</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Head of Procurement</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Vicinity Centres</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 Victoria, Australia</span>
+						<span class="pill">🎓 Monash University</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Cynthia Chung is a graduate of the Australian Institute of Company Directors and an MBA-qualified commercial leader adept at driving change and transformation in both established and greenfield environments. She has a proven track record of building high-performing teams and achieving strategic and commercial outcomes across various functional teams. Cynthia is known for her collaborative approach and ability to navigate complex supplier management issues through creative problem-solving and analytical skills. With experience across diverse industries, she has led global teams in Consulting, Technology, Automotive, FMCG, Retail, and Real Estate.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Procurement Leader | MBA | GAICD | Global | Creating value through Commercial Partnerships</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:cynthia.chung@vicinity.com.au">cynthia.chung@vicinity.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 437 221 597">+61 437 221 597</a></div>
+					<div class="k">Second Phone</div><div class="v"><a href="tel:+39 393 850 723">+39 393 850 723</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/cynthia-chung-3171325" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Head of Procurement at Vicinity Centres</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Procurement and Global Touchpoints Lead at Nando's Australia</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Commercial Director A/g at Nando's Australia</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Governance and Operations -Community Relations at Australia Post</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    I’m happy to share that I’ve obtained a new certification: Sydney Executive Plus: AI Fluency from University of Sydney! 
+
+AI is not magic! It is math + data + strategy.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-02 16:01:33</span>
+    <a href="https://www.linkedin.com/posts/cynthia-chung-au_im-happy-to-share-that-ive-obtained-a-new-activity-7379651786149769216-SfuT?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-l9sBW4jHKcyAz-8UeYW26UTWAWC1LP4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Looking forward to the CIPS Victoria International Women's Day event on Thursday, 6 March!
+
+Join me and an incredible panel of leaders as we discuss amplifying the visibility of women in the workforce and breaking down barriers to leadership, in line with this year's theme:
+#AccelerateAction.
+
+This will be a fantastic opportunity to connect, learn, and take actionable steps toward greater inclusion in our industry.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-02-27 01:00:41</span>
+    <a href="https://www.linkedin.com/posts/cynthia-chung-au_cipsvic-accelerateaction-cipsanzevents-activity-7300802008184238080-b_qr?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-l9sBW4jHKcyAz-8UeYW26UTWAWC1LP4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Honored to have been the keynote speaker at Monash Business School’s 2024 Dean’s Student Excellence Award Night. 
+
+Reflecting on the years since my time at Monash, I shared three insights I would give my younger self. 
+
+1. Community and Connections: Your network is invaluable. Build and nurture it, as success is stronger together.
+
+2. The Courage to Let Go of Perfectionism: Perfection is an illusion. Aim for excellence, learn from mistakes, and embrace imperfections.
+
+3. Taking Care of Self to Avoid Burnout: Prioritise your mental and physical health to maintain balance and thrive.
+
+Congratulations to all the award winners! 
+
+What advice would you give your younger self?
+
+#MonashBusinessSchool #Excellence #Community #Perfectionism #SelfCare
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-06-18 06:26:56</span>
+    <a href="https://www.linkedin.com/posts/cynthia-chung-au_monashbusinessschool-excellence-community-activity-7208822495057969155-ZETt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9-l9sBW4jHKcyAz-8UeYW26UTWAWC1LP4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/C560BAQGxkiPjDFokwg/company-logo_200_200/company-logo_200_200/0/1657695908811/vicinity_centres_logo?e=1762387200&v=beta&t=OVxbMaPzZNlLkldHj4VIVD_YjSzY-zrDMfkmM7jODdA" alt="Vicinity Centres">
+					</div>
+					<div>
+						<div class="company-name">Vicinity Centres</div>
+						<div class="company-tagline">We shape meaningful places where communities connect.</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://vicinity.com.au" target="_blank" rel="noopener">https://vicinity.com.au</a></div>
+					<div class="k">Industry</div><div class="v">real estate</div>
+					<div class="k">Phone</div><div class="v">+61 3 7001 4000</div>
+					<div class="k">Address</div><div class="v">1341 Dandenong Road, Malvern East, Victoria, Australia, 3145</div>
+					<div class="k">City</div><div class="v">Malvern East</div>
+					<div class="k">State</div><div class="v">Victoria</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company</strong>
+					<p>Vicinity Centres manages a wide range of retail destinations across Australia, serving as important community hubs. They emphasize a diverse retail mix, sustainable practices, and contemporary experiences while managing over 2.5 million square meters of leasable space. Their commitment to social and environmental sustainability highlights their focus on creating valuable community connections.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief</strong>
+					<p>Vicinity Centres, established in 2015 through the merger of Novion Property Group and Federation Centres, is an Australian Real Estate Investment Trust (REIT) specializing in the ownership and management of shopping centres across Australia. Headquartered at Chadstone Shopping Centre in Melbourne, the company manages a diverse portfolio of retail assets, including iconic destinations like Chadstone in Melbourne and Queen Victoria Building in Sydney. As of December 2021, Vicinity Centres had stakes in 60 shopping centres, with a revenue of $802 million and a net income of $1.2 billion in 2022.</p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>partnership with Global Marketplace (GMP), the owner of Click Frenzy, Click Central, and Power Retail, to expand its omnichannel retail presence and support the growth of its retail partners.</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>In November 2021, the company partnered with ENGIE to introduce electric vehicle fast-charging stations across its shopping centre car parks, aiming to enhance customer convenience and support the transition to electric vehicles.</li><li>In October 2021, Vicinity Centres announced a strategic partnership with Global Marketplace (GMP), the owner of Click Frenzy, Click Central, and Power Retail, to expand its omnichannel retail presence and support the growth of its retail partners.</li><li>in August 2021, Vicinity Centres invested in Taronga Ventures, Asia's leading technology and innovation investor, to access emerging real estate technologies and enhance its in-house product development program.</li><li>In December 2024, the company divested 50% stakes in three shopping centres—Elizabeth City Centre in South Australia, Roselands Centre, and Carlingford Court in New South Wales—for a total of $457 million, exceeding its full-year divestment target.</li><li>in November 2023, Vicinity Centres acquired the remaining 49% stake in Chatswood Chase in Sydney from Singapore's GIC for $307 million, with plans for a $620 million redevelopment to enhance the centre's offerings.</li>
+					</ul>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    What does it take to shape Australia’s top premium retail destinations?
+ 
+For almost a decade, Vicinity’s General Manager of Premium & Luxury Accounts, Ross Siciliano, has worked with the world’s most prestigious brands to curate luxury precincts, like Sydney's reimagined Chatswood Chase.
+ 
+Tune in to CBRE’s Talking Property podcast to hear Ross and CBRE’s Australian Head of Retail Research, Kate Bailey, discuss how evolving customer expectations are reflected in the precincts and experiences offered at today’s retail destinations.
+ 
+🎧 Listen to the episode here https://l.cohst.app/E6C7x7
+
+#Vicinity #ShoppingCentres
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-17 23:16:04</span>
+    <a href="https://www.linkedin.com/posts/vicinity_centres_vicinity-shoppingcentres-activity-7374325317727051776-apjQ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    At Vicinity, we recognise the importance of fostering an inclusive, gender-balanced property industry, and introducing school-aged girls to dynamic career opportunities, is one way we can progress this.
+
+Together with our JV partner, Salta, Urbis and the Property Council of Australia, we proudly hosted 100 year 9 and 10 students at Victoria Gardens Shopping Centre for the 2025 Girls in Property Day.
+
+The day featured a keynote on the history and exciting future of the Victoria Gardens precinct, a panel with leaders from across the sector, then a careers roundtable session, showcasing roles from Development and Asset Management through to Legal and Cyber Security.
+
+Putting their newfound industry knowledge to the test, the day ended with the girls designing and pitching their own development ideas for Victoria Gardens. 
+
+We hope to see some of these young women shaping meaningful places with us in the future!
+
+#VicinityCentres #GirlsInProperty
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-17 00:59:27</span>
+    <a href="https://www.linkedin.com/posts/vicinity_centres_vicinitycentres-girlsinproperty-activity-7373988949079359488-dB2E?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Sip with me, let’s chat ☕💛
+
+We kicked off a week of connection at Vicinity yesterday, as a meaningful way to recognise R U OK? Day.
+
+For the next week, we’re encouraging our team members to take someone for a coffee – to check in, connect and listen respectfully. Whether it's a colleague, a retailer, or someone new to the team, starting a genuine conversation could be life-changing and you never know who might need it most.
+
+We’re already seeing this ripple across our assets with moments of care and connection with our people, retailers and community.
+
+#VicinityCentres #ShoppingCentres #RUOKDay
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-09-11 23:52:53</span>
+    <a href="https://www.linkedin.com/posts/vicinity_centres_vicinitycentres-shoppingcentres-ruokday-activity-7372160258825252864-j7b4?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-FWNABr1rz7TxdsJFbIWIA4VcfMbw9rBU" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
