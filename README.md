@@ -34,10 +34,7 @@ Deliver/
     └── (add your own HTML files here with any name)
 ```
 
-## 🔐 Login Credentials
 
-**Email:** `kawkab@gmail.com`  
-**Password:** `kawkab.ai`
 
 ## 🎨 Customization Guide
 
