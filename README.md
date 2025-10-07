@@ -99,14 +99,6 @@ Each user file in the `html files/` folder contains:
 
 Simply edit the HTML content in each file to match your real user data.
 
-### 4. **Change Login Credentials**
-
-In `index.html`, find the JavaScript section (around line 127):
-```javascript
-const validEmail = 'kawkab@gmail.com';
-const validPassword = 'kawkab.ai';
-```
-
 Replace with your desired credentials.
 
 ### 5. **Modify Color Scheme**
