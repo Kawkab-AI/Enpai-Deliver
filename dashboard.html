@@ -30,13 +30,33 @@
         /* Card hover effects */
         .user-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
         }
 
-        .user-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        /* Desktop: horizontal layout */
+        @media (min-width: 768px) {
+            .user-card {
+                display: flex;
+                align-items: center;
+            }
+            
+            .user-card:hover {
+                transform: translateX(8px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            }
+        }
+
+        /* Mobile: vertical layout */
+        @media (max-width: 767px) {
+            .user-card {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .user-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
         }
 
         /* Button animations */
@@ -110,20 +130,20 @@
 
     <!-- Sticky Navbar with Glassmorphism -->
     <nav class="glass-navbar sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-28">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20 sm:h-28">
                 
                 <!-- Left Logo -->
                 <div class="flex-shrink-0">
-                    <div class="logo-placeholder flex items-center space-x-3">
-                        <img src="logo1.png" alt="Kawkab.AI Logo" class="h-20">
+                    <div class="logo-placeholder flex items-center space-x-2 sm:space-x-3">
+                        <img src="logo1.png" alt="Kawkab.AI Logo" class="h-12 sm:h-16 md:h-20">
                     </div>
                 </div>
 
                 <!-- Right Logo -->
                 <div class="flex-shrink-0">
-                    <div class="logo-placeholder flex items-center space-x-3">
-                        <img src="logo4.png" alt="Deliver Logo" class="h-12">
+                    <div class="logo-placeholder flex items-center space-x-2 sm:space-x-3">
+                        <img src="logo4.png" alt="Deliver Logo" class="h-8 sm:h-10 md:h-12">
                     </div>
                 </div>
 
@@ -132,25 +152,25 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-12">
         
         <!-- Header -->
-        <div class="mb-12 fade-in">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        <div class="mb-8 sm:mb-12 fade-in">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
                 Welcome to your <span class="gradient-text">Dashboard</span>
             </h1>
-            <p class="text-lg text-gray-600">Manage and view all user profiles from here</p>
+            <p class="text-base sm:text-lg text-gray-600">Manage and view all user profiles from here</p>
         </div>
 
         <!-- User Cards Column (Generated Dynamically) -->
-        <div id="cardsContainer" class="max-w-4xl mx-auto space-y-5">
+        <div id="cardsContainer" class="max-w-4xl mx-auto space-y-4 sm:space-y-5">
             <!-- Cards will be generated here by JavaScript -->
         </div>
 
         <!-- Logout Button -->
-        <div class="mt-12 text-center fade-in">
-            <button onclick="logout()" class="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-900 transition-all duration-300 hover:scale-105">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="mt-10 sm:mt-12 text-center fade-in">
+            <button onclick="logout()" class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gray-800 text-white font-semibold text-sm sm:text-base rounded-lg hover:bg-gray-900 transition-all duration-300 hover:scale-105">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                 </svg>
                 Logout
@@ -213,26 +233,26 @@
                 const cardNumber = index + 1;
                 
                 const card = document.createElement('div');
-                card.className = 'user-card fade-in bg-white rounded-2xl shadow-lg p-6 border border-gray-100';
+                card.className = 'user-card fade-in bg-white rounded-2xl shadow-lg p-5 sm:p-6 border border-gray-100';
                 card.style.animationDelay = `${(index + 1) * 0.1}s`;
                 
                 card.innerHTML = `
                     <!-- Avatar Circle -->
-                    <div class="flex-shrink-0">
-                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br ${colors.from} ${colors.to} rounded-full">
-                            <span class="text-2xl font-bold text-white">${cardNumber}</span>
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <div class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${colors.from} ${colors.to} rounded-full mx-auto md:mx-0">
+                            <span class="text-xl sm:text-2xl font-bold text-white">${cardNumber}</span>
                         </div>
                     </div>
                     
                     <!-- Content -->
-                    <div class="flex-1 ml-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-1">${file.title}</h3>
-                        <p class="text-gray-500 text-sm">${file.subtitle}</p>
+                    <div class="flex-1 md:ml-6 mb-4 md:mb-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1">${file.title}</h3>
+                        <p class="text-gray-500 text-xs sm:text-sm">${file.subtitle}</p>
                     </div>
                     
                     <!-- Button -->
-                    <div class="flex-shrink-0 ml-6">
-                        <button onclick="window.open('html files/${file.fileName}', '_blank')" class="view-btn bg-gradient-to-r ${colors.btnFrom} ${colors.btnTo} text-white font-semibold py-3 px-8 rounded-xl ${colors.btnHoverFrom} ${colors.btnHoverTo} whitespace-nowrap">
+                    <div class="flex-shrink-0 md:ml-6 w-full md:w-auto">
+                        <button onclick="window.open('html files/${file.fileName}', '_blank')" class="view-btn bg-gradient-to-r ${colors.btnFrom} ${colors.btnTo} text-white font-semibold py-3 px-6 sm:px-8 rounded-xl ${colors.btnHoverFrom} ${colors.btnHoverTo} whitespace-nowrap w-full md:w-auto text-sm sm:text-base">
                             View Profile
                         </button>
                     </div>
