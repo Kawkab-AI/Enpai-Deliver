@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Becky Johnson-Hoole - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/D5603AQHP2QqugvpvuQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1685565349101?e=1762992000&v=beta&t=aIr1kk6_vwFtX_AE12b5rSujNNrua8W5nJ1ny5-Kiws" alt="Becky Johnson-Hoole" onerror="this.parentElement.textContent='BJ'">
+				</div>
+				<div class="hero-meta">
+					<h1>Becky Johnson-Hoole</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Head of Procurement</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Superloop</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 New South Wales, Australia</span>
+						<span class="pill">🎓 Southern Cross University</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Becky Johnson-Hoole is a seasoned professional with 11 years of experience in procurement management and a strong focus on process improvement. She holds a Six-Sigma green belt and is adept at managing the end-to-end procurement and product lifecycle. An advocate for sustainability and supply chain diversification, Becky excels in strategic thinking and risk management while being comfortable with change. Her expertise extends to vendor management and stakeholder engagement, making her a valuable asset in the procurement field.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Procurement Governance and Policy | ESG and Sustainability | Supplier Relationship Management | Contract Management | Six Sigma Lean Green Belt | Asset and Inventory Management | Neurodiversity Advocate</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:becky.johnsonhoole@superloop.com">becky.johnsonhoole@superloop.com</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 433 063 687">+61 433 063 687</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/becky-johnson-hoole" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Head of Procurement at Superloop</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>SPP Ambassador at The Sustainable Procurement Pledge</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Procurement and Product Manager at BCDS Group</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Procurement Manager at Anytime Fitness</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    🌍 ESG is evolving—and procurement is on the front line of that shift.
+
+In our keynote panel on ESG due diligence, compliance, and risk, leaders Jake Bristow, Carsten Primdal, Becky Johnson-Hoole, CSSCLP & Graham Crawshaw unpacked the real-world tension between rising sustainability expectations and the practical challenges of implementation.
+
+Here’s what stood out:
+
+✅ ESG regulations are shifting, not disappearing.
+While mandates are softening in some regions, APAC is moving forward—with procurement leaders expected to drive tangible outcomes, not just reporting box-ticks.
+
+🔍 Due diligence needs to go deeper.
+Supplier audits, vetting processes, and contract terms must reflect ESG values—without compromising cost competitiveness. It’s a balancing act that demands smarter decision-making.
+
+🤖 AI can help—but only when used right.
+Forget the blockchain hype. Real gains lie in tools that support document analysis, compliance scoring, and data gathering—if we can manage the emissions trade-offs and regulatory hurdles.
+
+📉 Scope 3 emissions are now a procurement issue.
+Spend-based estimates are no longer enough. Suppliers must be brought into the journey—with the help of KPIs and contractual levers.
+
+🧠 The biggest mindset shift?
+Move from ESG targets to impact. That means better data, clearer frameworks, and a serious investment in team capability.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-05-21 00:08:08</span>
+    <a href="https://www.linkedin.com/posts/procurecon-asia-anz_esg-is-evolvingand-procurement-is-on-activity-7330102084370870272-lBW5?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF--rBoBBCGZ3Ca3t34QJ-2S8aUSaK692LY" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    I had a great opportunity this week to discuss procurements role in ESG with a great panel.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-05-21 00:06:47</span>
+    <a href="https://www.linkedin.com/posts/becky-johnson-hoole_is-esg-losing-momentum-or-just-evolving-activity-7330851538115985410-e3Qi?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF--rBoBBCGZ3Ca3t34QJ-2S8aUSaK692LY" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Excited to be attending ProcureCon Australia 2025 on 19-20 May at Hilton Sydney! 🚀
+
+This is the premier platform for procurement leaders to connect, share insights, and discuss the future of strategic procurement, supplier collaboration, and digital transformation. Looking forward to networking with peers, gaining fresh perspectives, and exploring the latest trends shaping our industry.
+
+Will I see you there? Let’s catch up! 🔗
+
+Find out more about ProcureCon Australia: https://lnkd.in/gZPm_Yz8
+
+#ProcureConAU #Procurement #Networking #SupplyChain
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-03-31 20:41:24</span>
+    <a href="https://www.linkedin.com/posts/becky-johnson-hoole_procureconau-procurement-networking-activity-7312680457177833472-ccDz?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF--rBoBBCGZ3Ca3t34QJ-2S8aUSaK692LY" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/C560BAQEr-UQr3ZU3rg/company-logo_200_200/company-logo_200_200/0/1675649630399/superloop_logo?e=1762992000&v=beta&t=OLkvURr3Eb6WHc1w8rzpVwLF_NQhaiCUtXTIC4by4eU" alt="Superloop">
+					</div>
+					<div>
+						<div class="company-name">Superloop</div>
+						<div class="company-tagline">Unleashing the unlimited possibilities of the internet.</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://superloop.com" target="_blank" rel="noopener">https://superloop.com</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/superloop" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">TELECOMMUNICATIONS</div>
+					<div class="k">Phone</div><div class="v">+61 1300 662 695</div>
+					<div class="k">Address</div><div class="v">12-20 Shelley St, Sydney, New South Wales, Australia, 2000</div>
+					<div class="k">City</div><div class="v">Sydney</div>
+					<div class="k">State</div><div class="v">New South Wales</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company</strong>
+					<p>Superloop exists to ’unleash the unlimited possibilities of the internet’. Founded in 2014, Superloop Limited (ASX:SLC) employs more than 900 team members and supports over 400,000 customers. With carrier-grade, metro fibre, plus fixed wireless networks across Australia, we provide high performance connectivity services for residential customers, small and medium-sized businesses, and some of Australia’s largest corporates.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief</strong>
+					<p>Superloop Limited is an Australian telecommunications company founded in 2014 by Bevan Slattery, headquartered in Sydney, New South Wales. The company specializes in designing, constructing, and operating fibre networks throughout the Asia Pacific region, providing scalable and reliable connectivity solutions for wholesale carriers and global content providers. Superloop offers a range of services, including wholesale fibre infrastructure, internet services, and network solutions, with a focus on high-speed internet connectivity. The company serves various client segments, including corporates, government agencies, and businesses across the Asia Pacific region. Superloop has a significant presence in Australia, Singapore, and Hong Kong, with plans for further expansion in the Asia Pacific market. As of October 2025, Superloop employs over 900 team members and supports more than 400,000 customers. The company has achieved notable milestones, such as returning to profit in the financial year ending 30 June 2025, with a net profit after tax of $1.2 million, and expanding its network infrastructure through strategic acquisitions. Superloop's unique value propositions include high-quality, flexible customization, and fast delivery of connectivity solutions. The company differentiates itself through its extensive fibre network, strategic partnerships, and commitment to delivering reliable and scalable connectivity solutions to meet the growing demands of the Asia Pacific region.</p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>Superloop partners with Origin Energy, Football Australia, DV Collective, and BSO to provide high-speed connectivity, support sports events, and enable community initiatives. They also work with VentraIP and Exetel to expand broadband services across Australia.</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>In April 2025, the company introduced the Superloop Partner Program, accessible via a self-service portal called Krypton, designed to provide IT channel organizations with tools and support to enhance their digital experience.</li><li>In May 2025, Superloop partnered with Football Australia to deliver robust connectivity infrastructure for the Hahn Australia Cup, aiming to enhance fan engagement and digital transformation in Australian football.</li><li>In August 2025, Superloop returned to profit in the financial year ending 30 June 2025, reporting a net profit after tax of $1.</li><li>In April 2017, Superloop acquired SubPartners, a telecommunications infrastructure provider, gaining access to international submarine cable capacity as a member of the INDIGO consortium, which connects Singapore, Indonesia, and Australia.</li>
+					</ul>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    Yea we did 🥉
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-09 18:23:10</span>
+    <a href="https://www.linkedin.com/posts/superloop_effiesau25-activity-7382224141283856384-bG6Q?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-8mDoBN2mrlsa_ViOZieyQ7w7VOqTi2ng" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Gah! What a phenomenal time we’ve had partnering with the team at Football Australia this year! ⚽ 🥰 
+
+We signed on as Football Australia’s official telecommunications partner for the Australia Cup, plus we kicked off connecting more than 270 community stadiums around the nation with high speed ‘net to help power AI live streaming of community matches, and we’ve had an absolute BLAST! 🚀 🔌 🏟️ 
+
+From the A-league playoffs in Darwin right up to the Hahn Australia Cup final last weekend in Melbourne (congrats Newcastle Jets!! So close, Heidelberg United Football Club!), we have loved every second. We’ve met fans, tossed coins, given away literal truckloads of merch, and screamed our voices hoarse pitch-side. 🤩 ⚽ 📣 
+
+Massive thanks to the entire FA team, special shout out to Todd Percy and Dave Edwards for being ace to work with. And to the incredible BTS Superloop team: Luci Manning, Jay Patel, Aline Rivas, Nick Hack, Christine Baydoğan, Justin Payne, Ben Colman, Madeline Craig, Kelly Martin, Daisey Stampfer, Adam Mallas, Pratik Badwaik, Mark Fleming, Sherman Fernandes, Warwick Butt, and Maria B.. ❤️ 💜 
+
+We love playing our part supporting grass roots football – long may it continue! 🙏
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-08 18:11:39</span>
+    <a href="https://www.linkedin.com/posts/superloop_gah-what-a-phenomenal-time-weve-had-partnering-activity-7381858857230401536-cznH?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-8mDoBN2mrlsa_ViOZieyQ7w7VOqTi2ng" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Is your business ready to strengthen its network and digital infrastructure? 
+
+Join our Superloop Cyber Awareness Webinar for Cyber Security Awareness Month. 
+
+Superloop cyber experts, and your hosts Brett Waddington and Steven Hall will cover off the history of crime waves, rise of cybercrime and the impact it's having on brands. 
+
+You'll come away from the session with a practical blueprint as well as strategies to safeguard digital assets and simplify security in your business
+
+Sign up here: https://bit.ly/4o8BvPs
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-08 15:16:00</span>
+    <a href="https://www.linkedin.com/posts/superloop_is-your-business-ready-to-strengthen-its-activity-7381814650474160128-M1uU?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF-8mDoBN2mrlsa_ViOZieyQ7w7VOqTi2ng" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
