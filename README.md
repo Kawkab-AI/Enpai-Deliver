@@ -126,7 +126,6 @@ The website uses gradient colors. To change them:
 ## 🎯 User Flow
 
 1. User visits `index.html` (Login Page)
-2. Enters credentials: `kawkab@gmail.com` / `kawkab.ai`
 3. Gets redirected to `dashboard.html`
 4. Sees 10 user cards with "View Profile" buttons
 5. Clicks any card to open the user profile in a new tab
