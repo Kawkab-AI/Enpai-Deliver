@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Deborah Woodford - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/D5603AQHpxLOowfsaeg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1689058742311?e=1765411200&v=beta&t=kCrZgThsONy8cD8DjwGqTz0XbzWQTMpHaJ1Q8QSN1cA" alt="Deborah Woodford" onerror="this.parentElement.textContent='DW'">
+				</div>
+				<div class="hero-meta">
+					<h1>Deborah Woodford</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Head of Marketing</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Great Southern Bank</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 Queensland, Australia</span>
+						<span class="pill">🎓 University of Sunderland, England</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Deborah is a dynamic marketing leader with a proven track record of transforming brands and driving growth. She employs a blend of creativity, data, and strategic insight to build engaging brands and enhance customer loyalty. With experience in leading large-scale rebrands and multi-channel campaigns, she excels in fast-paced consumer and regulated environments. Passionate about fostering creativity and alignment within teams, Deborah translates insights into action and vision into results.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>CMO / GM | Strategic Marketing Leader | Brand, Digital & Growth Transformation | Building Teams that Deliver Impact</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:deborah.woodford@cua.com.au">deborah.woodford@cua.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 438 495 365">+61 438 495 365</a></div>
+					<div class="k">Second Phone</div><div class="v"><a href="tel:+61 7 3552 4332">+61 7 3552 4332</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/deborah-woodford-3893414b" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Head Of Marketing at Great Southern Bank</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Marketing at CUA - Credit Union Australia Limited</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Senior Manager, Marketing Performace at CUA - Credit Union Australia Limited</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Segment Marketing Manager at QSuper Group</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    For the fourth year running, the University of Tasmania is ranked number one globally for Climate Action in the Times Higher Education Impact Rankings!
+
+The University has also risen from second to first in the world for the Life on Land goal, and achieved fourth in the world overall. 
+
+THE Impact Rankings rank 2,526 universities from 130 countries or territories based on their progress towards the United Nations’ Sustainable Development Goals (SDGs).
+
+Thank you to our staff and students who embed sustainability in everything we do across our teaching, research, operations and partnerships. This recognition of your commitment and efforts is well deserved.
+
+Read more: https://utas.au/hb
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-06-28 02:45:23</span>
+    <a href="https://www.linkedin.com/posts/university-of-tasmania_for-the-fourth-year-running-the-university-activity-7340906108753977344-jHKS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWYBN9pDCqq9pmLZa52WQp7WyPz-Em0" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    I'm excited to be supporting Assisterhood this year as a Mentor. No matter where you're at in your career, if you're looking for support and guidance, I encourage you to apply. 
+
+Since launching in 2018, Assisterhood has provided career-defining mentorships to hundreds of women, non-binary, and culturally underrepresented professionals across marketing, client services, design, creative, tech, media, strategy, and business disciplines. 
+
+Applications are closing soon, assisterhood.com.au/apply
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-04-11 04:00:15</span>
+    <a href="https://www.linkedin.com/posts/deborah-woodford-3893414b_im-excited-to-be-supporting-assisterhood-activity-7316278884327477248-nd7Z?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWYBN9pDCqq9pmLZa52WQp7WyPz-Em0" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Today, I had the privilege of sharing the rebrand journey of CUA to Great Southern Bank, a transformation that earned us the prestigious Effie's winning Challenger Brand title.
+
+Teaming up with Joseph Smeaton from Richards Rose we delved into the development of a brand strategy that aimed to enhance Credit Union Australia's visibility and resonance, that lead to the successful rebrand to Great Southern Bank.
+
+During our discussion, we highlighted the key insights and strategic moves that drove this significant change, particularly emphasizing our shift towards a purpose-driven approach, dedicated to helping all Australians own their own home.
+
+We shared how by engaging our audience in a relevant, engaging and distinctive way, we were able to punch way above our weight and grow by 3 times market. 
+
+A special thank you to Jody Elston, Alison Tilling, the Advertising Council Australia, and AANA - Australian Association of National Advertisers for the opportunity to share our 'happily clever after' story.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-03-27 06:21:49</span>
+    <a href="https://www.linkedin.com/posts/deborah-woodford-3893414b_today-i-had-the-privilege-of-sharing-the-activity-7310893791354241024-1dSG?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWYBN9pDCqq9pmLZa52WQp7WyPz-Em0" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/C560BAQHi3-7mvdCVnQ/company-logo_200_200/company-logo_200_200/0/1630647126762/gsbankau_logo?e=1765411200&v=beta&t=NNzamGZ24dWMWhkJIhY_QDvGjqmzG61x2QOOC_ADxCA" alt="Great Southern Bank">
+					</div>
+					<div>
+						<div class="company-name">Great Southern Bank</div>
+						<div class="company-tagline">Helping all Australians own their own home #GreatSouthernBank</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://greatsouthernbank.com.au" target="_blank" rel="noopener">https://greatsouthernbank.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/gsbankau" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">BANKING</div>
+					<div class="k">Phone</div><div class="v">+61 7 3552 4713</div>
+					<div class="k">Address</div><div class="v">300 George Street, Brisbane City, Queensland, Australia, 4000</div>
+					<div class="k">City</div><div class="v">Brisbane City</div>
+					<div class="k">State</div><div class="v">Queensland</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>Great Southern Bank has been putting customers first for over 75 years, serving more than 400,000 Australians. Formerly known as CUA, we remain customer owned and focused on helping Australians achieve their home ownership goals. Our commitment to community and sustainability drives our mission.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>Great Southern Bank, formerly Credit Union Australia, is Australia's largest customer-owned bank, established in 1946. It offers a range of financial services, including home loans, personal loans, credit cards, and business banking. Operating in the banking and financial services sector, it serves over 400,000 customers across Australia, with corporate offices in Brisbane, Sydney, and Melbourne. </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>P&N Group</li><li>Carlton Football Club</li><li>Helia</li><li>Reg360</li><li>ElysianNxt</li><li>Optus</li><li>Nice CXone</li><li>Constantinople</li><li>Born Digital Solutions</li><li>Cuscal</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Merger Talks with P&N Group - September 2025 - Australia</li><li>B Corp Certification Achieved - March 2024 - Australia</li><li>Extended Sponsorship with Carlton Football Club - March 2024 - Australia</li><li>Partnership with Helia for Lenders Mortgage Insurance - September 2023 - Australia</li><li>Implementation of Capital and Credit Risk Reporting Automation - May 2023 - Australia</li><li>Appointment of New Chief Information Officer - February 2025 - Australia</li><li>Launch of Digital Banking Services for Small Businesses - 2024 - Australia</li><li>Recognition as Celent Model Bank for 2023 - 2023 - Australia</li><li>Participation in Customer Owned Banking Association's 'Hike the Hill' Event - 2023 - Canberra, Australia</li><li>Launch of PayTo Payments Technology - 2023 - Australia</li><li>CEO's Testimony to House of Representatives Standing Committee on Economics - June 2023 - Toowoomba, Australia</li><li>Partnership with Born Digital Solutions for Automation Consulting - 2023 - Australia</li><li>Implementation of Climate Transition Plan 2025-2028 - 2025 - Australia</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    We’re banking on a sustainable future 🍃 
+  
+Respecting the environment and incorporating climate action into the way we operate is a significant part of being a responsible bank. Not just because it is the right thing to do, but because climate change has become a reality for many Australians. Flooding, fires, and extreme weather are impacting Australians’ ability to own, maintain and insure their homes – something which intersects with our purpose to help all Australians own their own home. 
+  
+That’s why we’re taking meaningful steps to reduce emissions and help build resilience – for our bank and our customers.  
+  
+Looking back on 2025, we’re proud to have: 
+✅ Completed our 2022–24 Climate Action Plan and launched a new Climate Transition Plan (https://lnkd.in/gVUdjv6a). 
+✅ Achieved carbon-neutral certification for our business operations through Climate Active for the fourth consecutive year. 
+✅ Transitioned 16 branches and all three office hubs to renewable energy or GreenPower^, progressing toward 100% renewable energy by 2030. 
+✅ Expanded our green lending portfolio with the launch of our Green Home Offer that supports customers to purchase eligible energy-efficient homes.  
+✅ Introduced a Responsible Investment Policy, reinforcing our commitment to net zero through excluding direct investments in the fossil fuels industry. 
+  
+For us, sustainability isn’t just about environmental goals - it’s about protecting the homes and communities we intend to serve for generations to come. Read more about how we’re partnering for impact in our Annual Report here: https://lnkd.in/gKfrm4Yx 
+  
+^GreenPower is a government managed program where we purchase and surrender large-scale generation certificates via our energy provider. 
+
+The comparative numbers used in the images below have been validated by our sustainability partner Anthesis Group
+  
+#Sustainability #ClimateAction #CustomerOwned
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-25 00:00:06</span>
+    <a href="https://www.linkedin.com/posts/gsbankau_were-banking-on-a-sustainable-future-activity-7398857978239451136-8gS7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEEIeMBd2CVNMxwPMZR7SLtZzI_Vxg66q8" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    A special shave and sweet treats to change the face of men’s health 💙   
+
+It's Movember and that usually means growing a good 'stache then shaving it off… but not for Collections Officer Shannon. He went the extra mile… to shave off the hair on his head - that he's been growing for over five years! 
+
+While his team were chatting about how to get involved in Movember this year, a fun suggestion that he shave his head turned into a serious bid to raise funds. Having been on his own mental health journey Shannon says he knows how much it means to support men's health.  
+
+"A lot of people are scared to talk about mental health. A lot of men don't want to talk about it at all. So much has changed for me personally since looking after my own mental health. Opening up has validated my experiences and empowered me. I feel completely different to where I was a few years ago," he says. 
+
+Looking after his own mental health has also had a positive impact in his professional role, particularly during sensitive conversations about money management with customers.  
+
+"I really gained a deeper understanding that everyone's situation is unique, and everyone processes their thoughts and emotions in different ways. It's given me a new perspective, and helped me to better support our customers during tricky conversations." 
+
+Thank you for sharing with us, Shannon. We love that you're speaking up and raising awareness, and literally changing the face of men's health! We also loved seeing Benjamin and Sula from our Product team rolling around our Brisbane Hub with a trolley of sweet treats to fundraise! 
+
+Shannon will be donating his locks to Sustainable Salons to be made into a wig for someone in need. If you'd like to contribute, you can make a donation to the team’s Movember page here: https://lnkd.in/gPHMhazY 
+
+#GreatPlacetoWork #Movember 
+Kylie Annie Kylie
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-21 07:03:02</span>
+    <a href="https://www.linkedin.com/posts/gsbankau_greatplacetowork-movember-activity-7397514861238239232-BIPC?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEEIeMBd2CVNMxwPMZR7SLtZzI_Vxg66q8" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    This month’s Human of Great Southern Bank made a big impact on our bank – and customers – long before officially joining us!  
+  
+Over a decade ago, Tenny Jose helped implement our core banking system as an external technical consultant. Today, as Technical Delivery Lead, he ensures our Online and Mobile Banking platforms run smoothly – responsibilities he partially inherited from a previous feature, Aimee Afoa (nee Keenan) (who insisted Tenny deserved this spotlight!).  
+   
+He shares that: “There are some exciting changes coming to our bank, so not every day looks the same. I may not know what each day will bring, but that’s what excites me.”  
+   
+Tenny’s focus is enabling the team to create seamless customer experiences through secure, compliant and customer-focused digital solutions. The past few months, his team has worked hard to deliver critical projects back-to-back – all to safeguard our customers.  
+   
+Diversity, collaboration, and unique strengths are key ingredients to his team’s success – much like a great potluck, where everybody brings something special to the table.   
+  
+“This is what Great Southern Bank is all about,” Tenny says. “I’m so proud to have such a strong Digital Banking team who delivered these changes with a smile on their face.”  
+   
+When the team isn’t bonding over technology or creating innovative solutions, they’re often bonding over food! Their quarterly potluck allows the team to show off their cooking skills and strengthen connections over hearty, home-cooked meals.  
+   
+As a self-confessed foodie, Tenny is grateful to live in Australia – a melting pot of cultures where he can try different cuisines. But even if his wife wasn’t looking over his shoulder, he would still choose her appam (a fermented rice and coconut milk pancake) and chicken/vegetable stew as the best meal he’s ever had!  
+   
+Being from Mumbai, the financial capital of India (and a cultural melting pot in its own right), Tenny grew up surrounded by many people with different cultures and beliefs – something that has shaped how he sees the world. Watching how his father treated others also deeply influenced him, and to this day, his dad remains his hero.  
+   
+“I’ve always admired my dad,” Tenny says. “He would tell me, ‘If you can’t help someone, make sure you don’t hurt them,’ and that always stuck with me.”  
+  
+Tenny, thanks for reminding us that the secret behind our rich culture is the way we connect – through our customers, our community, and, of course, cooking! As we celebrate Inclusion at Work Week, we love hearing how you bring diversity and inclusion to life every day in your role at our bank. 
+
+#OurGreatPeople
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-20 01:05:22</span>
+    <a href="https://www.linkedin.com/posts/gsbankau_ourgreatpeople-activity-7397062466507137024-cUp5?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEEIeMBd2CVNMxwPMZR7SLtZzI_Vxg66q8" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
