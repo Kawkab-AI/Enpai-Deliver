@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Carolyn Bendall - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/C4D03AQGAyF0ZtF-PzA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516853654055?e=1766016000&v=beta&t=JNgWNtcy4KCVoZQJp_vakbf45Kr0oCg9uDCf4IA00bw" alt="Carolyn Bendall" onerror="this.parentElement.textContent='CB'">
+				</div>
+				<div class="hero-meta">
+					<h1>Carolyn Bendall</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Chief Marketing Officer (Interim)</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Medibank</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 Victoria, Australia</span>
+						<span class="pill">🎓 The Marketing Academy</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Carolyn is an experienced marketing and communications executive and company director with extensive experience in the services industry across health, financial services, higher education, and sport & recreation sectors in Australia and New Zealand. She is known as a highly respected business leader who drives results through strategic clarity and exceptional management. Carolyn has a passion for creating winning customer propositions and brand distinctions that foster growth. Her accolades include being a three-time Australian CMO50 and a proud mentor in the Minerva Network.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Non Executive Director | CMO | Advisor | Mentor | Melbourne Cricket Club Committee.</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:carolyn.bendall@medibank.com.au">carolyn.bendall@medibank.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 400 057 534">+61 400 057 534</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/carolyn-bendall" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Chief Marketing Officer (Interim) at Medibank</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Committee Member - Melbourne Cricket Club at Melbourne Cricket Ground</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Advisory Board Member at Think HQ</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Business Mentor at Global Mentorship</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    What a privilege to attend a very special celebration of Australian of the Year Neale Daniher and FightMND at Admiralty House last night. 
+
+We heard from the Governor General, and how she shapes her role through care, kindness and respect. Could not love this more - precisely in my wheelhouse! 
+
+In launching his latest book, “The Power of Choice” Neale’s central theme is that you don’t get to choose everything that happens in life, but you do get to choose how you respond. There are universal choices - whether to take responsibility, nurture relationships, seek meaning, act with courage and contribute to something bigger than yourself. Once again Neale provides a masterclass for us all. 
+
+Perfect MC duties by David Campbell and a sublime performance by David Hobson. All in all an evening to remember, and a rally call for us all to keep up the fight. There is still a long way to go.
+
+Thank you and congratulations to the wonderful Daniher family and the FightMND Board and team Bec Daniher  Michael Schneider Peter Charles
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-17 22:38:31</span>
+    <a href="https://www.linkedin.com/posts/carolyn-bendall_what-a-privilege-to-attend-a-very-special-activity-7396300734159499264--1dr?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGBVF2wBn86scjkGWofXs_H0E_HUuVLTJ4I" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Medibank is hiring a Marketing Operations and Capability Lead.
+
+Are you passionate about driving operational excellence and building marketing capability that empowers teams to deliver impactful, customer-centric campaigns? We’re looking for a strategic and dynamic Marketing Operations and Capability Lead to join our Experience Hub (Marketing, Brand and CX) and help shape the future of marketing at Medibank.
+
+🌟 Why this role matters
+
+This is a pivotal leadership role that acts as the bridge between strategy, execution, and continuous improvement. You’ll be instrumental in streamlining marketing operations, uplifting capability, and ensuring compliance and financial rigour across the Customer Group and broader enterprise.
+
+🧩 What you’ll be doing
+
+Operational Excellence & Compliance
+Lead the optimisation of marketing processes, governance, and resource planning to drive efficiency and consistency across teams.
+
+Strategic Planning & Reporting
+Partner with the xHub Lead (CMO) to align marketing operations with Medibank’s strategic objectives and deliver robust reporting and planning frameworks.
+
+Capability Development
+Assess skill gaps, design training programs, and foster a culture of learning through forums, workshops, and industry partnerships.
+
+Financial Control & Vendor Management
+Oversee budget planning and contract management for key vendors, including our media agency of record, ensuring value and compliance.
+
+People Leadership
+Lead a small high-performing team, championing a culture of accountability, recognition, and continuous improvement.
+
+🧠 What you bring
+
+Significant experience in senior marketing operations leadership
+
+Proven experience in budget management, process optimisation, and capability uplift
+
+Strong stakeholder and vendor management skills
+
+Strategic mindset with commercial acumen
+
+Experience in regulated industries (healthcare preferred)
+
+Passion for driving change and enabling excellence
+
+📈 Impact & Influence
+
+You’ll have oversight of the Experience Hub’s operational budget, supporting the xHub Lead and Squad Leads in delivering efficient, compliant, and high-impact marketing initiatives.
+
+💬 Ready to lead the way in marketing excellence?
+
+If you’re excited by the opportunity to shape how marketing operates and grows at Medibank, we’d love to hear from you. 
+
+Applications close: Monday 27 October 2025 at 12pm (AEDT) https://lnkd.in/gUjhYiR5
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-17 07:00:54</span>
+    <a href="https://www.linkedin.com/posts/carolyn-bendall_marketing-operations-and-capability-lead-activity-7384815653339320320-tJNw?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGBVF2wBn86scjkGWofXs_H0E_HUuVLTJ4I" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Excited to have joined the wonderful team at Medibank last week as their Interim Chief Marketing Officer. It’s a privilege to join such a purpose-driven company, and such smart, values-led people on their mission to create the best health and wellbeing for Australia. Also a privilege to follow in the footsteps of Medibank’s beloved former CMO. Big shoes to fill indeed. Thank you for the very warm welcome 🙏 
+
+Milosh Milisavljevic Becky Hyde Louise Hansen Sara Fleming Merryn Olifent Samantha White Charbel H. Kelly MacLean Jonathan Goh Vida Asrina Dhulst Andrew Retschko
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-07-27 05:50:38</span>
+    <a href="https://www.linkedin.com/posts/carolyn-bendall_excited-to-have-joined-the-wonderful-team-activity-7355082161873448961-GvaK?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGBVF2wBn86scjkGWofXs_H0E_HUuVLTJ4I" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/C560BAQGjlU8di6JN3w/company-logo_200_200/company-logo_200_200/0/1657671909890/medibank_logo?e=1766016000&v=beta&t=7zvp7XrwA95U4ZbellsU8iCBOzitnFaj3dSPA5YXKLk" alt="Medibank">
+					</div>
+					<div>
+						<div class="company-name">Medibank</div>
+						<div class="company-tagline">Putting Health First, For All Australians.</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://medibank.com.au" target="_blank" rel="noopener">https://medibank.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/medibank" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">INSURANCE</div>
+					<div class="k">Phone</div><div class="v">+61 1300 974 948</div>
+					<div class="k">Address</div><div class="v">720 Bourke Street, Docklands, Victoria, Australia, 3008</div>
+					<div class="k">City</div><div class="v">Docklands</div>
+					<div class="k">State</div><div class="v">Victoria</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>At Medibank we are motivated by improving the health of all Australians and the health of our members. We are passionate about building a better health system that is centred on people and sustainable in the long term. Medibank’s core business is the underwriting and distribution of private health insurance policies through our two brands, Medibank and ahm. We also provide a range of integrated healthcare services to our private health insurance policyholders, government, corporate and other retail customers.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>Medibank is Australia's largest private health insurer, headquartered in Melbourne, Victoria. Established in 1976, it offers a range of health insurance products, including hospital and extras cover, as well as travel, life, and pet insurance. Through its Medibank and ahm brands, the company serves over 4 million customers nationwide, aiming to improve health and wellbeing across Australia. Medibank also provides integrated healthcare services to policyholders, government, corporate, and other retail customers. </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>League</li><li>parkrun Australia</li><li>Sydney Gay and Lesbian Mardi Gras</li><li>Magda Szubanski</li><li>Ending Loneliness Together</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Medibank and League partner to transform the digital health experience - October 21, 2024 - Las Vegas, USA</li><li>Medibank extends parkrun partnership and becomes the first Australian presenting partner - November 2024 - Australia</li><li>Medibank partners with Sydney Gay and Lesbian Mardi Gras - November 2024 - Sydney, Australia</li><li>Medibank and Magda Szubanski team up to start an important conversation about mental health in Australia - June 8, 2025 - Australia</li><li>Medibank continues partnership with Ending Loneliness Together with a focus on social connection and prevention - August 2025 - Australia</li><li>Medibank strengthens commitment to diversity and access - August 2025 - Australia</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    This Transgender Awareness Week, the Rainbow Collective, Medibank’s LGBTQIA+ employee network, kicked off with a keynote and Q&A session featuring Joe Ball, Victoria’s Commissioner for LGBTQIA+ Communities.
+
+Joe shared valuable insights on trans and gender diverse health, parenting, and the role organisations can play in creating greater health equity. One message that stood out was his reminder that:
+"Inclusion cannot be built for communities, it must be built with them. LGBTQIA+ people are not just recipients of care, we are also the reformers of it. We bring innovation, lived experiences and insights that strengthen the entire system."
+
+Medibank is proud to support and elevate trans and gender diverse people, and the broader LGBTQIA+ community. Visibility, lived experience and community leadership are central to creating a more equitable health system, and we are committed to continuing this work.
+
+As part of Trans Awareness Week, Medibank will be hosting a series of events through to 20 November, including a national clothing drive to support the Affirmation Station by TGV | Transgender Victoria, a fundraising campaign for Transgender Victoria, and a short film festival featuring trans and gender diverse stories in partnership with Queer Screen - Mardi Gras Film Festival.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-19 00:35:51</span>
+    <a href="https://www.linkedin.com/posts/medibank_this-transgender-awareness-week-the-rainbow-activity-7396692649874776064-DAyC?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEkXXsBuphoYn0toWHALLlYhOyQFkC7Vm4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Last week, Medibank was proud to be a Principal Supporter of the 2025 National Loneliness Conference: Creating a Culture of Connection, hosted by Ending Loneliness Together . Our partnership with Ending Loneliness Together is part of Medibank’s ten year commitment to addressing loneliness, for better health and wellbeing.
+ 
+Congratulations to the team at Ending Loneliness Together for bringing together an incredible array of speakers where evidence, lived experience storytelling, and innovative community-led solutions combined to spark a national conversation on how we can strengthen connection for better health.
+ 
+A special thank you to our friends at Flying Fox, parkrun Australia, and Butter for sharing the experiences and insights in Medibank’s feature panel ‘innovative approaches in action’. There was standing room only! We are proud to partner with organisations like Flying Fox and parkrun who are actively providing initiatives that foster meaningful social connections in communities across Australia.
+ 
+Some key takeaways from the Conference:
+- Social connection is a fundamental human need, it is essential for physical and mental wellbeing and the key to human thriving.
+- No-one is immune to loneliness. We need to build a culture of connection in workplaces, communities, and education settings.
+- Kindness is an underutilised skill – and one we all have access to.
+- Small actions matter. Each of us can create opportunities for connection in our spheres of influence.
+
+For services and initiatives, we need to think about strengthening connection as a design principle. How can we lower the barriers to social connection? And think about who is missing?
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-14 01:57:17</span>
+    <a href="https://www.linkedin.com/posts/medibank_last-week-medibank-was-proud-to-be-a-principal-activity-7394901204381773824-d3y4?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEkXXsBuphoYn0toWHALLlYhOyQFkC7Vm4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Not all disabilities are visible and sometimes, a small symbol can make a big difference. The Hidden Disability Sunflower is a globally recognised initiative that signals someone may need a little extra support, understanding, or time.
+
+At Medibank, we’ve embraced this initiative internally to foster a culture of empathy and inclusion. In this story, two of our team members, Katt O'Sullivan and Em Versaico, share their lived experiences with hidden disabilities and how the sunflower helps them navigate work with dignity and confidence.
+
+From airports to workplaces, this simple symbol is creating spaces where people feel seen without having to explain. For us, it’s more than a lanyard or a wristband, it’s a commitment to walk the talk on health and wellbeing.
+
+Read their story here: https://lnkd.in/gkRNx2Zr
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-12 23:46:08</span>
+    <a href="https://www.linkedin.com/posts/medibank_not-all-disabilities-are-visible-and-sometimes-activity-7394505810321735681-kSs7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEkXXsBuphoYn0toWHALLlYhOyQFkC7Vm4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
