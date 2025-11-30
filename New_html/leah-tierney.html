@@ -1,0 +1,817 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Leah Tierney - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/C5603AQE8ZrUuxJco-Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1538531206706?e=1766016000&v=beta&t=DQZ0x5C2nV0kPHfmIZBCOXtTizU5-1Zem1jD8llBstY" alt="Leah Tierney" onerror="this.parentElement.textContent='LT'">
+				</div>
+				<div class="hero-meta">
+					<h1>Leah Tierney</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Strategic Marketing Manager</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Royal Automobile Club of Tasmania (RACT)</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 Tasmania, Australia</span>
+						<span class="pill">🎓 University of Tasmania</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Leah Tierney is an experienced marketing professional with a strong focus on strategic initiatives at the Royal Automobile Club of Tasmania (RACT). Over her career, she has held multiple leadership roles, showcasing her capability to drive impactful marketing campaigns. Passionate about community engagement and road safety, Leah collaborates effectively with diverse teams. She leverages her education from the University of Tasmania to enhance her strategic approach to marketing.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Strategic Marketing at Royal Automobile Club of Tasmania (RACT)</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:l.tierney@ract.com.au">l.tierney@ract.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 407 184 185">+61 407 184 185</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/leah-tierney-57128379" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Strategic Marketing Manager at Royal Automobile Club of Tasmania (RACT)</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Marketing and Communications at Royal Automobile Club of Tasmania (RACT)</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head Of Marketing at Royal Automobile Club of Tasmania (RACT)</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Marketing Manager at Royal Automobile Club of Tasmania (RACT)</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    🎶 This new fuel campaign is one that I’m so proud of, especially working with a new team, new agency and super short time frames BUT we did it!
+
+A massive thank you to Erica and Kate White for all the hard work & late nights (we literally filmed at all hours of the night 🥶). Also thank you to the team at Showpony - especially Bryony and Claudia, we loved working with you. 🎶
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-06-10 09:48:05</span>
+    <a href="https://www.linkedin.com/posts/leah-tierney-57128379_if-youre-a-member-life-just-got-sweeter-activity-7338109688133111810-NvFq?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGHP7aYB-h-g_GxaGE3EgwN5qUBn4A-9reE" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Youth road safety, a campaign that’s close to my heart 💛 By far, the most meaningful campaign I’ve worked on in my career.
+Thanks to my team, Rita, Before Creative, Joshua Lamont ACS & SODA productions for all your hard work to bring this one to life.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-05-06 11:55:03</span>
+    <a href="https://www.linkedin.com/posts/leah-tierney-57128379_more-than-a-statistic-activity-7193186496898613249-NWMO?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGHP7aYB-h-g_GxaGE3EgwN5qUBn4A-9reE" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Looking for some help with web design, development or strategy? This is Caleb’s new venture and he’s awesome to work with. Hit him up for a coffee sometime ☕️
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2023-12-05 12:12:47</span>
+    <a href="https://www.linkedin.com/posts/leah-tierney-57128379_tasmanias-first-computer-activity-7137760713111990273-Evat?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGHP7aYB-h-g_GxaGE3EgwN5qUBn4A-9reE" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/D560BAQETy12axQb60Q/company-logo_200_200/company-logo_200_200/0/1719788029510/ract_logo?e=1766016000&v=beta&t=doSDywqczX1-wAJn9--LUWcfgzXTGzNWljQHh_QJiqg" alt="Royal Automobile Club of Tasmania (RACT)">
+					</div>
+					<div>
+						<div class="company-name">Royal Automobile Club of Tasmania (RACT)</div>
+						<div class="company-tagline">We support the lives of Tasmanians.</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://ract.com.au" target="_blank" rel="noopener">https://ract.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/ract" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">CONSUMER SERVICES</div>
+					<div class="k">Phone</div><div class="v">+61 13 27 22</div>
+					<div class="k">Address</div><div class="v">179-191 Murray Street, Hobart, Tasmania, Australia, 7000</div>
+					<div class="k">City</div><div class="v">Hobart</div>
+					<div class="k">State</div><div class="v">Tasmania</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>We’ve been part of the Tasmanian community for 100 years. We offer motoring, home and lifestyle services, as well as a range of benefits and rewards to support our more than 210,000 members. We speak up on the issues Tasmanians are passionate about and advocate for safe and accessible mobility for all road users.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>The Royal Automobile Club of Tasmania (RACT), established in 1923, is Tasmania's largest member organization, offering motoring, home, and lifestyle services to over 200,000 members. Their services include roadside assistance, vehicle, home, and contents insurance, personal and car loans, driver's education, and tourism. RACT is headquartered in Hobart, Tasmania, and primarily serves the Tasmanian community. </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>Bennett’s Petroleum</li><li>Bonney Energy</li><li>SPEAK UP! Stay ChatTY</li><li>Kennerley</li><li>Migrant Resource Centre Launceston</li><li>Tasmanian Aboriginal Centre</li><li>Youth, Family & Community Connections Inc.</li><li>Mitch McPherson</li><li>Get Frank Podcast</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Fuel Rewards Program Update - May 7, 2025 - Tasmania</li><li>Participation in TasPride Parade 2025 - March 16, 2025 - Tasmania</li><li>Launch of Road Safety Podcast Series with Mitch McPherson - September 4, 2024 - Tasmania</li><li>100 Free Driver Training Lessons for Underprivileged Youth - May 19, 2023 - Tasmania</li><li>Centenary Celebrations and Community Events - 2023 - Tasmania</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    Our ever-popular partner networking event with Brand Tasmania is on Wednesday 3 December in Hobart. Don't miss the conversation between Roxane from Geoneon, Thiago and Thais from Guess My Accent and Brand Tasmania acting CEO Jess Radford. It will be rich with insight into how we welcome those who visit our state and those who choose to call Tasmania home. 
+
+Our final event together for 2025, we warmly invite you to join us. Booking details below.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-24 01:43:07</span>
+    <a href="https://www.linkedin.com/posts/ract_youre-invited-to-a-tasmanian-welcome-activity-7398521517728477184-d0vS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEDnVkBQEWrHyMtx8jZd9pVcCXOpbt3s1s" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    We’re delighted to announce Keryn Nylander as RACT’s new President and Chair of the Board. 
+
+Keryn brings over two decades of board leadership experience to the role and a deep connection to the Tasmanian community. Her experience spans Bank of Us, Aurora Energy, the Committee for Greater Hobart and the Tasmania JackJumpers. 
+
+A proud Tasmanian, Keryn’s career includes three decades in media as an award-winning journalist and communications professional. She was also the first woman nationally to serve as Head of News for WIN Television Tasmania. 
+
+Her expertise extends across corporate, government and not-for-profit sectors, and the Tasmanian community. She has also played a pivotal role in Tasmania’s wine industry and economic development through numerous senior board positions. 
+
+Keryn has served on the RACT Board for three years and was confirmed in her new role at RACT’s AGM on 13 November, where she acknowledged outgoing President and Chair Alison Flakemore for her outstanding service. 
+
+We’re excited to have Keryn’s leadership guiding RACT into its next chapter.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-18 06:17:54</span>
+    <a href="https://www.linkedin.com/posts/ract_were-delighted-to-announce-keryn-nylander-activity-7396416339529097216-mx1N?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEDnVkBQEWrHyMtx8jZd9pVcCXOpbt3s1s" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    We're celebrating! Our Eastlands store fitout was awarded Best Design in Retail at the IFA 2025 Design Awards over the weekend. Congratulations to our partners Yellow Sky Design, who brought our new space to life with our members and team experience in mind, and our thanks to the Interior Fitout Association for the recognition. 
+ 
+"Our design brief was simple: design something that enhances our experience and draws on the value that is created by our people-first approach," says Chief Operations Officer Stacey Pennicott.
+ 
+The IFA Design Awards celebrate outstanding and innovative design across commercial, retail, health and hospitality, with finalists and winners representing the very best interior fitout designs in Australia. For RACT, the award also recognises the creativity, innovation and functionality behind our new retail experience, which is an essential point of contact with our valued members.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-13 03:57:59</span>
+    <a href="https://www.linkedin.com/posts/ract_were-celebrating-our-eastlands-store-fitout-activity-7383320065468899329-ujYM?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEDnVkBQEWrHyMtx8jZd9pVcCXOpbt3s1s" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      

@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Danielle Colbert - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/D5603AQHqTmKD_LPRdQ/profile-displayphoto-crop_800_800/B56ZhTLkGzG0AI-/0/1753742197812?e=1766016000&v=beta&t=Zpg1D1oSokPXEOoKorpzOv53MvuerQVyQfd7rMaBKIY" alt="Danielle Colbert" onerror="this.parentElement.textContent='DC'">
+				</div>
+				<div class="hero-meta">
+					<h1>Danielle Colbert</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Head of Brand and Marketing</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 TPG Telecom</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 New South Wales, Australia</span>
+						<span class="pill">🎓 Squared Online</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Danielle is a senior marketing professional with extensive experience in the telecommunications, FMCG, and pharmaceutical sectors, having worked for major companies such as Vodafone, The Coca-Cola Company, Unilever, and Bayer. She has a strong background in strategic business planning, marketing strategy, brand development, and integrated campaigns. Passionate about building world-class brands, Danielle excels in dynamic environments and drives high ROI through consumer insight and commercial acumen. She inspires teams and engages senior stakeholders to achieve outstanding results.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Head of Brand and Marketing</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:danielle.colbert@vodafone.com.au">danielle.colbert@vodafone.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 408 579 354">+61 408 579 354</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/danielle-colbert-570ab2b" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Head of Brand and Marketing - TPG, iiNet and Felix Mobile at TPG Telecom</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Marketing -Vodafone at TPG Telecom</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head Of Brand and Communications at Vodafone</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Head of Brand Strategy and Insights at Vodafone</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    Several exciting roles have opened up across my team. It’s a really exciting time to join TPG! Please get in touch if any of these roles spark your interest. 
+
+Senior Strategy & Planning Manager - Customer Marketing, focused on leading the Customer Strategy and Planning function across TPG brands within CLM and building out our customer personalisation strategy 
+
+2 Commercial Performance Manager roles have opened up in Bridget Suthersan’s team
+
+A Lifecycle Marketing Manager role has opened up in Michelle Wood’s team, focused on driving customer marketing and transformational outcomes across one of our key brands.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-11-11 06:31:33</span>
+    <a href="https://www.linkedin.com/posts/rachel-appleby-7b9bb454_several-exciting-roles-have-opened-up-across-ugcPost-7259366690319196160-iOK7?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEvXrYBmdSZUzY83XYjOJpcLAiyi5aFpv4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Very proud to share our new iPhone 16 Pro Roller Disco film, which launched nationally yesterday. This has been a labour of love over the last few months and we are thrilled to finally see it in market. This is the third year of our iPhone “Showstopper” campaign and it’s fair to say the new iPhone upstages some pretty spectacular roller-skating in this year’s spot. Massive thanks goes to the team at Saatchi & Saatchi Australia for bringing the creative idea to life’, the team at Starcom Australia for their fantastic media planning and our Apple marketing partners Andy Hodgson  and Richard Stonley for their constant support and guidance. And to the amazing Vodafone Marketing, Media and Design teams who worked tirelessly to deliver this work - thank you again! 
+
+https://lnkd.in/g8K7-cBK
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-10-14 02:00:56</span>
+    <a href="https://www.linkedin.com/posts/danielle-colbert-570ab2b_vodafone-iphone-16-pro-trade-in30s-activity-7251381428087611392-yRi9?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEvXrYBmdSZUzY83XYjOJpcLAiyi5aFpv4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    Fantastic role. Incredible leader!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-03-23 09:59:28</span>
+    <a href="https://www.linkedin.com/posts/danielle-colbert-570ab2b_hybridworking-activity-7177227440342069248-8xDf?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGEvXrYBmdSZUzY83XYjOJpcLAiyi5aFpv4" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/C4D0BAQEucXXVQs1vvQ/company-logo_200_200/company-logo_200_200/0/1656633077562/tpg_telecom_logo?e=1766016000&v=beta&t=Gehmh3HM-ug0xTJQ_5G1Msq_8NPhkmZvyjVMhYEZlwA" alt="TPG Telecom">
+					</div>
+					<div>
+						<div class="company-name">TPG Telecom</div>
+						<div class="company-tagline">Connecting Australia for the better</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://tpgtelecom.com.au" target="_blank" rel="noopener">https://tpgtelecom.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/tpg-telecom" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">TELECOMMUNICATIONS</div>
+					<div class="k">Phone</div><div class="v">+61 2 8277 5405</div>
+					<div class="k">Address</div><div class="v">200 Barangaroo Avenue, Sydney, New South Wales, Australia, 2000</div>
+					<div class="k">City</div><div class="v">Sydney</div>
+					<div class="k">State</div><div class="v">New South Wales</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>TPG Telecom is one of Australia’s largest telecommunication companies and operates several leading mobile and internet brands including Vodafone, TPG, iiNet, Internode, Lebara, AAPT, and Felix. As a full-service telecommunications provider, TPG Telecom offers mobile, internet, business, and fixed network solutions to a diverse range of customers. It operates a robust mobile network and Australia’s second-largest fixed voice and data network.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>TPG Telecom Limited is an Australian telecommunications company offering mobile and fixed-line services, including broadband, mobile plans, and enterprise solutions. Operating under brands like Vodafone, TPG, iiNet, AAPT, Internode, Lebara, and felix, it serves residential, business, and government customers across Australia. Headquartered in Sydney, TPG Telecom owns and operates extensive nationwide network infrastructure, including over 27,000 kilometers of fiber-optic cables and more than 5,600 mobile sites. </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>Optus</li><li>Ericsson</li><li>Digital Realty</li><li>MATRIXX Software</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Network Sharing Agreement with Optus - April 2024 - Australia</li><li>Launch of AI-Powered Analytics Tool with Ericsson - August 14, 2023 - Australia</li><li>Restructuring of Cloud and Security Functions - May 20, 2025 - Australia</li><li>Joint Venture with Digital Realty for Data Centers - July 27, 2023 - Northern Virginia, USA</li><li>Renewal of Agreement with MATRIXX Software Through 2030 - October 14, 2025 - Australia</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    It was great to have Giovanni Chiarelli, our Chief Technology Officer, attend the The Australian Financial Review's Infrastructure Summit this week, where he joined the Satellites, Signals and Remote Infrastructure panel alongside leaders from Amazon Leo’s Project Kuiper, Myriota, and Deep Tech Ventures to discuss the future of connectivity in regional Australia.
+
+The conversation tackled some of the most pressing questions for our industry:
+ - How do we wire the outback and set investment priorities?
+ - Should mobile operators share rural networks to accelerate coverage?
+ - Can satellite technology bridge the digital divide without ground infrastructure?
+ - Is regulation keeping pace with rapid tech deployment?
+
+Giovanni highlighted how regional network sharing has more than doubled TPG/Vodafone's mobile coverage, improving affordability and reliability for remote communities. He also stressed the need for balanced spectrum regulation, collaboration between technology providers and government, and integration of emerging satellite solutions to ensure resilient, future-ready networks.
+
+Australia’s connectivity challenge is complex, but with the right partnerships and policies, we can deliver solutions that truly reach every corner of the country.
+
+A big thank you to Paul Smith for moderating a great panel!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-14 04:19:02</span>
+    <a href="https://www.linkedin.com/posts/tpg-telecom_it-was-great-to-have-giovanni-chiarelli-activity-7394936876505186305-nQEM?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGIELR8B3FabhN0qwAhjA2SHwueS1Qqc0Eo" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Ctrl + Alt + Sore Feet! After 23.8 million steps, our TPG Telecom steppers are finally giving their feet a rest after #STEPtember has wrapped up. This is our third year participating, in support of our Foundation partner Cerebral Palsy Alliance.
+
+Almost 100 employees chalked up an amazing 23.8 million steps, averaging over 330,000 steps per person. Customer Operations, People Experience and Finance teams were standout contributors in both fundraising and stepping.
+
+The energy, generosity and enthusiasm of our people helped raise over $6,000 which will go towards supporting young people like Eloise living with cerebral palsy. 
+
+STEPtember is just one example of how the TPG Telecom Foundation empowers our people to support the causes they care about. Whether it’s fundraising for a charity or taking paid leave to volunteer, our people know they’re backed to make a difference.
+
+Watch Eloise's story: https://lnkd.in/gBhZpvET
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-13 00:01:27</span>
+    <a href="https://www.linkedin.com/posts/tpg-telecom_eloises-story-activity-7394509666862587904-syKP?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGIELR8B3FabhN0qwAhjA2SHwueS1Qqc0Eo" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    We connect Australians every day, but this week was all about connecting with each other.
+ 
+Wellbeing Week at TPG Telecom gave us a chance to pause and check in. We heard from experts about how to better care for our body, mind and even our finances, and how all of these shape the way we show up at work.
+ 
+A standout was hearing from Jelena Dokic. She shared her story of strength and survival which was a powerful reminder that resilience is about showing up consistently, for ourselves and for one another. 
+ 
+We’re proud to be a workplace where wellbeing isn’t just a buzzword. While we’re always switched on for our customers, we make sure our people have space to recharge too.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-10-31 02:53:04</span>
+    <a href="https://www.linkedin.com/posts/tpg-telecom_we-connect-australians-every-day-but-this-activity-7389841811692871680-9Pnv?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGIELR8B3FabhN0qwAhjA2SHwueS1Qqc0Eo" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
