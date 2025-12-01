@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Melissa Merrett - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/C5603AQHp0HjUTkHNwQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1551230578101?e=1766016000&v=beta&t=JflWEBNlI3TcNufuyfjiWl2bz-vDLxfMQPA4tahWTfs" alt="Melissa Merrett" onerror="this.parentElement.textContent='MM'">
+				</div>
+				<div class="hero-meta">
+					<h1>Melissa Merrett</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Communications and Marketing Manager</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 John Holland</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 Victoria, Australia</span>
+						<span class="pill">🎓 Deakin University, Geelong, Australia</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>Melissa Merrett is an accomplished Communications and Marketing Manager with extensive experience in stakeholder engagement and community relations. She currently manages communications at John Holland, focusing on fostering relationships and enhancing communication strategies. With a strong background in journalism and communications, Melissa has contributed significantly to various high-profile projects. A graduate of Deakin University, she is driven by a commitment to transforming lives through effective communication.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Community Stakeholder and Engagement Manager</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:melissa.merrett@jhg.com.au">melissa.merrett@jhg.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 437 287 953">+61 437 287 953</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/melissa-merrett-1b9049146" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Community and Stakeholder Relations Manager at John Holland</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Communications and Marketing Manager at John Holland</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Senior Communications Advisor at John Holland</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Senior journalist at Leader Community Newspapers</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    So excited to be back to see Metro Tunnel open! Congratulations to everyone who put their heart and soul into this massive feat!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-12-01 00:34:32</span>
+    <a href="https://www.linkedin.com/posts/melissa-merrett-1b9049146_johnhollandtransforminglives-metrotunnel-activity-7401040972849115136-aogv?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGKpL4B-wUdxeIG2UgrsgQc_JzpKTQm6bc" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    I’m happy to share that I’m starting a new position as Communications and Marketing Manager at John Holland!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2023-05-11 08:20:17</span>
+    <a href="https://www.linkedin.com/posts/melissa-merrett-1b9049146_im-happy-to-share-that-im-starting-a-new-activity-7062310429988950016-G7IL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGKpL4B-wUdxeIG2UgrsgQc_JzpKTQm6bc" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2019-03-20 12:57:19</span>
+    <a href="https://www.linkedin.com/posts/melissa-merrett-1b9049146_my-summer-internship-has-allowed-me-to-graduate-activity-6514102403103551488-Ps51?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGKpL4B-wUdxeIG2UgrsgQc_JzpKTQm6bc" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/D560BAQHTMLNiGUtAtw/company-logo_200_200/company-logo_200_200/0/1683445599066/john_holland_logo?e=1766016000&v=beta&t=evPEnZT2Pbfe0YDHdEF8IX3mMBqC8G9lnSrpjERWjew" alt="John Holland">
+					</div>
+					<div>
+						<div class="company-name">John Holland</div>
+						<div class="company-tagline">Transforming lives through innovative solutions.</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://johnholland.com.au" target="_blank" rel="noopener">https://johnholland.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/john-holland" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">CONSTRUCTION</div>
+					<div class="k">Phone</div><div class="v">+61 3 8698 9400</div>
+					<div class="k">Address</div><div class="v">172-192 Flinders St, Melbourne, Victoria, Australia, 3000</div>
+					<div class="k">City</div><div class="v">Melbourne</div>
+					<div class="k">State</div><div class="v">Victoria</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>At John Holland, our purpose is simple: we transform lives. With 75 years of experience, we are one of Australia’s leading companies in building, infrastructure, rail, and transport. We are delivering many of Australia’s largest infrastructure projects, and our people-first philosophy continues to attract the best talent. Our commitment to innovation enables us to push boundaries across multiple industry sectors.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>John Holland is an Australian infrastructure company specializing in engineering, construction, and services across sectors such as transport, energy, and resources. Their offerings include building and civil construction, tunneling, water and environmental projects, and transport services. Operating in Australia, New Zealand, and Southeast Asia, John Holland is a subsidiary of China Communications Construction Company. </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>Health Infrastructure</li><li>Illawarra Shoalhaven Local Health District (ISLHD)</li><li>Dexus</li><li>Queensland Government</li><li>Downer Group</li><li>Transdev</li><li>CPB Contractors</li><li>AECOM</li><li>KBR</li><li>Alstom</li><li>Metro Trains Melbourne</li><li>V/Line</li><li>Rail Projects Victoria</li><li>Seymour Whyte</li><li>Jacobs</li><li>Mott MacDonald</li><li>Penrith Panthers</li><li>Populous</li><li>Tyrell Studio</li><li>University of Wollongong</li><li>Local Aboriginal Land Councils</li><li>Turrbal people</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Hitting new heights in the Shoalhaven - Topping out ceremony for Shoalhaven Hospital Redevelopment - March 10, 2025 - Shoalhaven, NSW</li><li>Changing the face of Brisbane’s waterfront - Stage One construction of Waterfront Brisbane project - April 13, 2023 - Brisbane, QLD</li><li>John Holland to deliver $438m Shoalhaven Hospital redevelopment - Announcement of partnership with Health Infrastructure and ISLHD - March 1, 2023 - Shoalhaven, NSW</li><li>John Holland to help bring the new $1.3b Toowoomba Hospital to life - Partnership with Queensland Government for new Toowoomba Hospital - June 16, 2023 - Toowoomba, QLD</li><li>John Holland to support a new era of train manufacturing in Queensland - Partnership with Downer Group and Queensland Government for train manufacturing facility - June 30, 2023 - Torbanlea, QLD</li><li>John Holland to deliver new Penrith Stadium - Selection to redevelop Penrith Stadium and surrounding precinct - March 7, 2025 - Penrith, NSW</li><li>Transdev and John Holland to run world's largest tram network - Joint venture Yarra Journey Makers awarded contract to operate Melbourne's tram network - June 28, 2024 - Melbourne, VIC</li><li>John Holland appoints new Chief Operating Officer - Appointment of David Lehmann as COO - February 29, 2024 - Company Headquarters</li><li>John Holland named as part of preferred consortium for Melbourne Airport Rail - Selection as part of Sunshine Systems Alliance for Melbourne Airport Rail project - September 27, 2022 - Melbourne, VIC</li><li>Getting on with the Eastern Freeway upgrades: Hoddle to Burke Alliance awarded contract to deliver a key component of the North East Link - Award of contract for Eastern Freeway Upgrade - August 11, 2025 - Melbourne, VIC ---</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    Looking back on a TRAM-endous year! 🚃
+
+We’re celebrating one year of operating and maintaining the iconic Yarra Trams network as part of the Yarra Journey Makers JV with Transdev.
+
+Since taking over operations, our team has been keeping Melbourne moving by delivering:
+
+✅ 160+ million passenger journeys – connecting people to major events like the Formula 1 Australian Grand Prix, the Australian Open and the AFL Grand Final.
+✅ Real-time loading updates on TramTracker – to help plan a more comfortable journey
+✅ Uplifted tram maintenance
+✅ Introduced Australia’s first RailPod to improve network inspections and maintenance.
+
+Here's to another year of keeping Melbourne moving!  
+
+#JohnHollandTransformingLives #AusRail2025 #Transport #Melbourne
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-12-01 05:12:21</span>
+    <a href="https://www.linkedin.com/posts/john-holland_today-marks-one-year-of-yarra-journey-makers-activity-7401110888554086400-dISu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGB_uF8B5MfVaPW39Mjo8ki_DT0t59bXvOQ" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    🛤️ 93km of upgraded rail network
+🚆 9km twin tunnels connecting the east and west of Melbourne
+🚉 5 world-class underground stations built
+🏙️ 1 city-shaping project delivered.
+
+The Metro Tunnel is officially open!
+
+This is the biggest transformation to Melbourne’s public transport network since the City Loop opened over 40 years ago, and we’re so proud to have been part of it from start to finish. 
+
+From tunnelling deep under Melbourne’s CBD and building five iconic underground stations to delivering complex rail systems and operating trains, this project is a true showcase of what John Holland does best.
+
+Our Cross Yarra Partnership (CYP) and Rail Network Alliance (RNA) teams made it all possible, and the journey continues with our CYP Asset Management Services team keeping the tunnels and stations running smoothly for the next 23 years.
+
+A big thank you to the Victorian Government, our project partners, subcontractors and suppliers for helping us deliver something truly transformational for Melbourne. 
+
+We couldn’t be prouder to see people enjoy the Metro Tunnel and new stations for the first time!
+
+Metro Tunnel Project
+
+#JohnHollandTransformingLives #MetroTunnel #JohnHollandTransportAndRail
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-30 10:31:17</span>
+    <a href="https://www.linkedin.com/posts/john-holland_johnhollandtransforminglives-metrotunnel-activity-7400828760079548416-UUDS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGB_uF8B5MfVaPW39Mjo8ki_DT0t59bXvOQ" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    From the start of works to opening day and beyond, we’ve been part of every step of Metro Tunnel Project's journey 🚆
+
+This project has showcased the very best of John Holland, with our teams at Cross Yarra Partnership (CYP), Rail Network Alliance (RNA), and our project partners working together to deliver something truly transformational for Melbourne. 
+
+From early works to tunnelling under the CBD, building iconic stations, laying tracks, installing smart high-capacity signalling, train testing, and then once it opens maintaining the tunnel and station assets, our people have been at the heart of it all.
+
+Swipe through to see some of the biggest milestones from the Metro Tunnel journey and the amazing work from our teams that made it all happen.
+
+We can’t wait to see the Metro Tunnel open to the public this Sunday!
+
+#JohnHollandTransformingLives #MetroTunnel #JohnHollandRailAndTransport
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-29 01:00:43</span>
+    <a href="https://www.linkedin.com/posts/john-holland_transforming-melbourne-our-metro-tunnel-activity-7400322784687738880-k5Jj?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGB_uF8B5MfVaPW39Mjo8ki_DT0t59bXvOQ" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
