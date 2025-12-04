@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Genevieve Sanders - Portfolio Profile</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--bg: #f7f8fc;
+			--card: #ffffff;
+			--text: #0f172a;
+			--muted: #64748b;
+			--primary: #6366f1;
+			--primary-600: #4f46e5;
+			--accent: #a78bfa;
+			--blue: #60a5fa;
+			--ring: rgba(99, 102, 241, 0.35);
+			--border: #e5e7eb;
+			--shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 8px rgba(2, 6, 23, 0.04);
+			--radius-lg: 16px;
+			--radius-md: 14px;
+			--radius-sm: 12px;
+			--space: 22px;
+			--space-lg: 28px;
+			--space-xl: 44px;
+			--maxw: 1100px;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, "Poppins", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(1200px 700px at 10% -10%, rgba(99,102,241,0.12), rgba(99,102,241,0) 40%),
+				radial-gradient(900px 600px at 110% 10%, rgba(96,165,250,0.12), rgba(96,165,250,0) 40%),
+				radial-gradient(900px 700px at -10% 100%, rgba(167,139,250,0.12), rgba(167,139,250,0) 40%),
+				var(--bg);
+			line-height: 1.55;
+		}
+
+		a { color: var(--primary-600); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 28px 20px 64px;
+		}
+
+		/* Hero Card */
+		.hero {
+			position: relative;
+			background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+			backdrop-filter: saturate(180%) blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 48px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			margin-bottom: 40px;
+		}
+		.hero:before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: 22px;
+			background:
+				radial-gradient(800px 240px at 50% -10%, rgba(99, 102, 241, 0.15), transparent 40%),
+				radial-gradient(600px 240px at 10% 20%, rgba(96, 165, 250, 0.12), transparent 50%),
+				radial-gradient(700px 240px at 90% 30%, rgba(167, 139, 250, 0.12), transparent 45%);
+			pointer-events: none;
+			z-index: 0;
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: center;
+		}
+		@media (max-width: 640px) {
+			.hero-inner {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 20px;
+			}
+		}
+		.avatar {
+			width: 180px;
+			height: 180px;
+			border-radius: 24px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			box-shadow: 0 12px 30px rgba(2, 6, 23, 0.15);
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 72px;
+			font-weight: 900;
+			color: white;
+		}
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.hero-meta h1 {
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.5px;
+			margin: 0 0 10px 0;
+			font-size: clamp(32px, 5vw, 48px);
+		}
+		.hero-meta .role {
+			color: var(--muted);
+			font-weight: 600;
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 4px;
+		}
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: #f3f6ff;
+			color: #27357a;
+			border: 1px solid #e6eaff;
+			font-weight: 600;
+			font-size: 12px;
+		}
+
+		/* Section heading */
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 32px 0 20px;
+			font-family: Poppins, Inter, sans-serif;
+			font-weight: 800;
+			letter-spacing: -0.3px;
+			font-size: 28px;
+			color: var(--text);
+		}
+		.section-title .bar {
+			width: 32px;
+			height: 10px;
+			border-radius: 8px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+			animation: pulse-bar 2s ease-in-out infinite;
+		}
+		@keyframes pulse-bar {
+			0%, 100% { transform: scaleX(1); opacity: 1; }
+			50% { transform: scaleX(1.1); opacity: 0.8; }
+		}
+
+		/* Card grid */
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-lg);
+			padding: var(--space-lg);
+			box-shadow: var(--shadow);
+			transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+			will-change: transform;
+			position: relative;
+			overflow: hidden;
+		}
+		.card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 3px;
+			background: linear-gradient(90deg, var(--primary), var(--accent), var(--blue));
+			opacity: 0;
+			transition: opacity .3s ease;
+		}
+		.card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18), 0 8px 20px rgba(99, 102, 241, 0.08);
+			border-color: rgba(99, 102, 241, 0.3);
+		}
+		.card:hover::before {
+			opacity: 1;
+		}
+
+		.card .card-headline {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 20px 0;
+			font-weight: 800;
+			font-size: 20px;
+			font-family: Poppins, Inter, sans-serif;
+			color: var(--text);
+			padding-bottom: 12px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.card .card-headline .icon {
+			width: 24px;
+			height: 24px;
+			color: var(--primary-600);
+			flex: 0 0 24px;
+			font-size: 24px;
+			filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+		}
+
+		/* Content styling inside cards */
+		.card :where(h1, h2, h3, h4) { margin: 14px 0 8px; font-weight: 700; }
+		.card :where(h1, h2) { font-size: 18px; }
+		.card :where(h3, h4) { font-size: 16px; }
+		.card p { margin: 8px 0; color: var(--text); }
+		.card .muted, .card small, .card .subtle { color: var(--muted); }
+
+		.card ul, .card ol {
+			margin: 10px 0 10px 20px;
+			padding: 0;
+		}
+		.card li { margin: 6px 0; }
+
+		.card a {
+			color: var(--primary-600);
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba(79,70,229,0.35);
+			transition: color .2s ease, border-color .2s ease, background .2s ease;
+			border-radius: 6px;
+			padding: 2px 4px;
+		}
+		.card a:hover {
+			color: #1f2a63;
+			background: rgba(79,70,229,0.06);
+			border-color: transparent;
+			text-decoration: none;
+		}
+
+		/* Key-value rows */
+		.kv {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 6px 14px;
+			margin-top: 20px;
+		}
+		@media (max-width: 640px) {
+			.kv { grid-template-columns: 1fr; }
+		}
+		.kv .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+		.kv .v { color: var(--text); font-size: 14px; word-break: break-word; }
+
+		/* Experience blocks */
+		.experience-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.xp {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			border-left: 5px solid var(--primary);
+			font-size: 14px;
+			line-height: 1.7;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease, border-left-width .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.xp::after {
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			width: 40px;
+			height: 40px;
+			background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+		}
+		.xp:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+			border-left-width: 8px;
+		}
+		.xp.current {
+			border-left-color: #10b981;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+		}
+		.xp.current::after {
+			background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+		}
+		.xp.current:hover {
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+		}
+		.xp-label {
+			font-size: 12px;
+			font-weight: 800;
+			color: var(--primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.xp-label::before {
+			content: '💼';
+			font-size: 14px;
+		}
+		.xp.current .xp-label { color: #10b981; }
+		.xp.current .xp-label::before { content: '⭐'; }
+
+		/* Posts */
+		.posts-grid {
+			display: grid;
+			gap: 14px;
+			margin-top: 16px;
+		}
+		.post {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			font-size: 14px;
+			line-height: 1.7;
+			font-style: italic;
+			color: #065f46;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.post::before {
+			content: '💬';
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-size: 28px;
+			opacity: 0.15;
+		}
+		.post:hover {
+			transform: translateX(4px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.post-label {
+			font-size: 11px;
+			font-weight: 800;
+			color: #10b981;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+			display: block;
+			font-style: normal;
+		}
+
+		/* Company section */
+		.company-header {
+			display: flex;
+			align-items: center;
+			gap: 18px;
+			padding: 22px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+			border: 1px solid var(--border);
+			margin-bottom: 20px;
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.company-header:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+		}
+		.company-logo-box {
+			width: 70px;
+			height: 70px;
+			border-radius: 12px;
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			flex-shrink: 0;
+		}
+		.company-logo-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.company-logo-placeholder {
+			font-weight: 900;
+			color: var(--primary);
+			font-size: 28px;
+		}
+		.company-name {
+			font-size: 22px;
+			font-weight: 800;
+			color: var(--text);
+			margin-bottom: 4px;
+		}
+		.company-tagline {
+			font-size: 13px;
+			color: var(--muted);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 8px 0;
+		}
+		.list li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 6px;
+			font-size: 14px;
+			color: #475569;
+			line-height: 1.6;
+		}
+		.list li::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 8px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+		}
+
+		/* About Section */
+		.about-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			border-left: 5px solid #0ea5e9;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.about-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
+		}
+		.about-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #0c4a6e;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.about-section strong::before {
+			content: 'ℹ️';
+			font-size: 20px;
+		}
+		.about-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #164e63;
+			margin: 0;
+		}
+
+		/* Recent Events */
+		.events-section {
+			padding: 20px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+			border-left: 5px solid #10b981;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.events-section::after {
+			content: '📅';
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			opacity: 0.2;
+		}
+		.events-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(16, 185, 129, 0.18);
+		}
+		.events-section strong {
+			font-size: 16px;
+			font-weight: 800;
+			color: #065f46;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 12px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.events-section strong::before {
+			content: '🎯';
+			font-size: 20px;
+		}
+		.events-section p {
+			font-size: 15px;
+			line-height: 1.8;
+			color: #065f46;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		/* Brief Section */
+		.brief-section {
+			padding: 18px;
+			border-radius: 14px;
+			background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+			border-left: 5px solid #a855f7;
+			margin-top: 16px;
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+			transition: transform .3s ease, box-shadow .3s ease;
+		}
+		.brief-section:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+		}
+		.brief-section strong {
+			font-size: 15px;
+			font-weight: 800;
+			color: #6b21a8;
+			display: block;
+			margin-bottom: 10px;
+			font-family: Poppins, Inter, sans-serif;
+		}
+		.brief-section p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: #581c87;
+			margin: 0;
+		}
+
+		/* Footer */
+		.footer {
+			margin-top: 28px;
+			display: flex;
+			justify-content: center;
+			color: var(--muted);
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="avatar">
+					<img src="https://media.licdn.com/dms/image/v2/D5603AQGxm9LRJnkESw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1708061111790?e=1766620800&v=beta&t=zmp6yIs7a5zew1LpN-31LZ0jT1UJxRlYbH_glu2XH8s" alt="Genevieve Sanders" onerror="this.parentElement.textContent='GS'">
+				</div>
+				<div class="hero-meta">
+					<h1>Genevieve Sanders</h1>
+					
+					<div class="role" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-start;">
+						<span style="color: var(--muted);">Marketing Manager, Business Marketing</span>
+						<span style="color: var(--muted);">•</span>
+						<span style="color: #10b981; font-weight: 700;">🏢 Commonwealth Bank</span>
+					</div>
+					
+					<div class="hero-actions">
+						<span class="pill">📍 New South Wales, Australia</span>
+						<span class="pill">🎓 QUT (Queensland University of Technology)</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- USER INFORMATION SECTION -->
+		<div class="section-title"><span class="bar"></span><span>Lead Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">👤</span>
+					Lead Profile
+				</div>
+
+				
+				<div class="about-section">
+					<strong>Professional Summary</strong>
+					<p>I am a creative, energetic, and detail-oriented marketing professional with extensive experience in B2C and B2B marketing. I excel in developing and executing innovative marketing strategies that drive revenue across various channels. My strong organizational skills and attention to detail ensure that I effectively review and manage marketing campaign assets. Passionate about mentoring future marketing professionals, I aim to help others achieve their career goals and make a positive impact in the field.</p>
+				</div>
+				
+				
+				
+				<div class="brief-section">
+					<strong>Professional Headline</strong>
+					<p>Marketing Manager, Business Marketing at Commonwealth Bank</p>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Email</div><div class="v"><a href="mailto:genevieve.sanders@cba.com.au">genevieve.sanders@cba.com.au</a></div>
+					<div class="k">Phone</div><div class="v"><a href="tel:+61 420 822 520">+61 420 822 520</a></div>
+					
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/in/genevievesanders" target="_blank" rel="noopener">View Profile</a></div>
+				</div>
+
+				
+				<div class="experience-grid">
+					<div class="xp current"><div class="xp-label">Current Job</div>Marketing Manager, Business Marketing at Commonwealth Bank</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Senior Marketing Executive at Ingram Micro</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Marketing Manager at Arq Group</div>
+					<div class="xp"><div class="xp-label">Previous Job</div>Customer Value Management Graduate at Optus</div>
+				</div>
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">📌 LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    I’m happy to share that I’m starting a new position as Marketing Manager, Business Marketing at Commonwealth Bank!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-01-22 22:23:17</span>
+    <a href="https://www.linkedin.com/posts/activity-7287942929136992256-WzwM?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWcBusDyLwfXISyRgQJW0yENqS_E9dk" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    Ingram Micro is thrilled to announce our new Digital Platform Xvantage! As we continue to grow, we're looking for a Marketing Executive to join our team. This is an incredible opportunity to be a part of our exciting journey. If you're interested in joining our team, please apply now.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-05-15 08:37:12</span>
+    <a href="https://www.linkedin.com/posts/liswalters_ingram-micro-is-thrilled-to-announce-our-activity-7191613914420244480-sKXU?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWcBusDyLwfXISyRgQJW0yENqS_E9dk" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">📌 LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    What an incredible day! Yesterday, more than 1100 people gathered at ICC Sydney for the #IngramMicroExperience2024 event, bringing together the IT industry under one roof. The atmosphere was electric as attendees engaged in networking, absorbed insightful presentations, and experienced cutting-edge product demos.
+
+Check out some of the event's highlights below!
+
+A heartfelt thank you to all who joined us for this remarkable experience!
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2024-05-10 07:03:11</span>
+    <a href="https://www.linkedin.com/posts/ingram-micro_ingrammicroexperience2024-ugcPost-7194552809910935555-dvgp?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGFFkWcBusDyLwfXISyRgQJW0yENqS_E9dk" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+
+		<!-- COMPANY INFORMATION SECTION -->
+		
+		<div class="section-title" style="margin-top:40px;"><span class="bar"></span><span>Company Information</span></div>
+
+		<div class="grid">
+			<section class="card">
+				<div class="card-headline">
+					<span class="icon">🏢</span>
+					Company Details
+				</div>
+
+				
+				<div class="company-header">
+					<div class="company-logo-box">
+						<img src="https://media.licdn.com/dms/image/v2/D560BAQGLodxq_N-mcA/company-logo_200_200/company-logo_200_200/0/1692243810359/commonwealthbank_logo?e=1766620800&v=beta&t=KOvNq1QWp1A48usQbY_rVntB2lBZ_piGYzvMBR6tBu4" alt="Commonwealth Bank">
+					</div>
+					<div>
+						<div class="company-name">Commonwealth Bank</div>
+						<div class="company-tagline">Australia's leading financial services provider</div>
+					</div>
+				</div>
+				
+
+				<div class="kv">
+					<div class="k">Website</div><div class="v"><a href="https://commbank.com.au" target="_blank" rel="noopener">https://commbank.com.au</a></div>
+					<div class="k">LinkedIn</div><div class="v"><a href="http://www.linkedin.com/company/commonwealthbank" target="_blank" rel="noopener" style="color: #0a66c2;">🔗 View Company Profile</a></div>
+					<div class="k">Industry</div><div class="v">financial services</div>
+					<div class="k">Phone</div><div class="v">+61 13 22 21</div>
+					<div class="k">Address</div><div class="v">201 Sussex St, Sydney, New South Wales, Australia, 2000</div>
+					<div class="k">City</div><div class="v">Sydney</div>
+					<div class="k">State</div><div class="v">New South Wales</div>
+					<div class="k">Country</div><div class="v">Australia</div>
+				</div>
+
+				
+				<div class="about-section">
+					<strong>About the Company (From Linkedin)</strong>
+					<p>Commonwealth Bank is Australia's leading provider of financial services, offering a comprehensive range of products, including retail, business, and institutional banking, as well as investment, insurance, and superannuation services. With a strong commitment to helping Australians build and manage their finances, we pride ourselves on our extensive expertise and customer-centric approach. We are dedicated to fostering community connections and promoting financial wellbeing.</p>
+				</div>
+				
+				
+				<div class="brief-section">
+					<strong>Company Brief (From Website)</strong>
+					<p>The Commonwealth Bank of Australia (CBA) is Australia's largest bank, offering a comprehensive range of financial services, including retail, business, and institutional banking, as well as funds management, superannuation, insurance, investment, and broking services. Established in 1911, CBA operates across Australia and internationally, with a significant presence in New Zealand, Asia, the United States, and the United Kingdom. Its subsidiaries include Bankwest, Colonial First State Investments, ASB Bank (New Zealand), Commonwealth Securities (CommSec), and Commonwealth Insurance (CommInsure). </p>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Partners</strong>
+					<ul class="list">
+						<li>OpenAI</li><li>Dandelion Payments</li><li>Triple Bubble</li><li>Queensland Government</li><li>Vogue Codes</li><li>Microsoft</li><li>Global Screening Services (GSS)</li><li>Cricket Australia</li><li>FIFA</li><li>Western Sydney Stadium</li>
+					</ul>
+				</div>
+				
+
+				
+				<div class="events-section">
+					<strong>Recent Events</strong>
+					<ul class="list">
+						<li>Partnership with OpenAI - August 2025</li><li>Partnership with Dandelion Payments for Real-Time Global Transfers - October 2025</li><li>Partnership with Triple Bubble to Support Fintech Innovation - September 2025</li><li>Partnership with Queensland Government for Banking Services - May 2024</li><li>Sponsorship of Vogue Codes 2024 - May 2024</li><li>Launch of CommBank Connect Media Network - November 2024</li><li>Sponsorship of SXSW Sydney 2024 - October 2024</li><li>Partnership with NSW Government for Banking Services - February 2025</li><li>Partnership with Microsoft to Deepen Gen AI Collaboration - March 2024</li><li>Investment in Global Screening Services (GSS) for Payments Screening - March 2024</li><li>Sponsorship of Cricket Australia Concluding in June 2025 - December 2024</li><li>Sponsorship of FIFA Women's World Cup 2023 - November 2022</li><li>Sponsorship of Western Sydney Stadium Since 2021</li>
+					</ul>
+				</div>
+				
+
+				
+
+				
+				<div style="margin-top:20px;">
+					<strong style="font-size:16px;color:var(--text);font-family:Poppins,Inter,sans-serif;display:block;margin-bottom:4px;">Company LinkedIn Posts</strong>
+					<div class="posts-grid">
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #1</span><div class="linkedin-post">
+  <p class="post-text">
+    "Before joining CommBank, I’d worked as a flight attendant, a scuba diving instructor, and travelled the world. When I returned to Australia, I wanted to find a career that gave me purpose. CommBank’s reputation as a great place to work caught my attention. I saw a role focused on helping customers improve their financial wellbeing and I thought, that’s me. 
+  
+Since then, I’ve worked in roles across branches and now as a Home Lending Specialist. I fell in love with lending because every customer enquiry is linked to a story. The person I'm speaking to has a goal that's important to them, and I get to help them make that a reality and shape their future. I’ve even had a customer name their chicken after me when they bought their dream farm! It's a privilege to be a part of those exciting moments. 
+  
+Four years ago, I was diagnosed with ADHD. The diagnosis came with a mix of emotions, but it also gave me clarity in how I could help others living with neurodiversity. I’ve found so many opportunities to champion change through our incredible Enable employee network, who increase awareness, inclusion, and accessibility for staff living with disabilities. Later, I joined the project developing CommBank’s Neuroinclusive Banking initiative for customers. Seeing those ideas come to life, and knowing we’re the first bank in Australia to do this, makes me so proud. 
+  
+Helping people feel understood and empowered matters to me, and I’m grateful that I get the chance to make that happen every day." 
+  
+Anna Black - Home Lending Specialist
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-12-03 01:16:45</span>
+    <a href="https://www.linkedin.com/posts/commonwealthbank_before-joining-commbank-id-worked-as-a-activity-7401776372937101312-GU_1?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGZvh0Baa1cc8A58tkutsmIBk6hR2ts_LI" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #2</span><div class="linkedin-post">
+  <p class="post-text">
+    A front row seat as the CommBank Matildas take on Asia’s best? No doubt 📣 CommBank is proudly backing the AFC Women’s Asian Cup Australia 2026™.
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-25 04:50:22</span>
+    <a href="https://www.linkedin.com/posts/commonwealthbank_a-front-row-seat-as-the-commbank-matildas-activity-7398931026242215936-1UsK?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGZvh0Baa1cc8A58tkutsmIBk6hR2ts_LI" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+						<div class="post"><span class="post-label">🏢 Company LinkedIn Post #3</span><div class="linkedin-post">
+  <p class="post-text">
+    “I was born and bred on a farm. Growing up on the land was an incredible experience – it taught me the value of hard work, community and staying grounded. I’ve owned my own farm and orchards since, and I still love being surrounded by people in rural and farming communities.
+
+A moment that’s always stayed with me was when a customer was doing it tough after a death in the family. The whole community rallied – around 50 farmers, service providers and neighbours turned up to help, donating cattle and getting them back on their feet. That kind of spirit is what makes the land so special.
+
+Today is National Agriculture Day – a time to celebrate Australia’s incredible farm sector and this year’s theme, ‘Stand with the Land’. For me, 'Stand with the Land' means being there in moments of need, building partnerships, nurturing relationships, and standing alongside farmers through good times and bad. 
+
+At CommBank, we’ve got amazing bankers across regional Australia doing just that. Nothing makes me happier than helping our customers and being part of their story.
+
+Over the years, I’ve seen the industry evolve. Farming hasn’t been without its challenges, but there’s a real sense of optimism again. Seeing young people step up and take on the family business is inspiring, and the way technology continues to improve how we work is incredible to watch.
+
+Australian agribusiness is in a good place – strong, resilient and world-leading. We’ll keep facing challenges head-on and standing together through whatever comes next.”
+
+Roddy Brown, National General Manager Agribusiness Distribution
+  </p>
+  <div class="post-footer">
+    <span class="post-date">📅 Posted on 2025-11-21 04:37:27</span>
+    <a href="https://www.linkedin.com/posts/commonwealthbank_i-was-born-and-bred-on-a-farm-growing-up-activity-7397478227637751809-VK7c?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGGZvh0Baa1cc8A58tkutsmIBk6hR2ts_LI" target="_blank" class="post-link">🔗 View on LinkedIn</a>
+  </div>
+</div>
+</div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+
+		<div class="footer">Build With Kawkab AI</div>
+	</div>
+</body>
+</html>
+      
